@@ -31,11 +31,11 @@ export default async function Login({ }: Props) {
                         <h1 className={LoginStyle.font} >IT ADVENTURERS<br/>GUILD</h1>
                     </div>
 
-                    <div className={LoginStyle.inputBox} style={{paddingTop: '2%' }}>
+                    <div className={LoginStyle.inputBox} style={{paddingTop: '1%' }}>
                         <input placeholder='E-mail/Username' type='input' className={LoginStyle.font}></input>
                     </div>
-
-                    <div className={LoginStyle.inputBox} style={{paddingTop: '3%' }}>
+                    <p>&nbsp;</p>
+                    <div className={LoginStyle.inputBox} style={{paddingTop: '1%' }}>
                         <input placeholder='Password' type='input' className={LoginStyle.font}></input>
                     </div>
 
