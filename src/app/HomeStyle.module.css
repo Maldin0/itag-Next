@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700');
+
+
+
+.villageImageOne {
+  position: relative; /* ทำให้รูปพื้นหลังคงที่ */
+  width: 100%; /* กำหนดความกว้างให้เท่ากับหน้าจอ */
+  height: 100%; /* กำหนดความสูงให้เท่ากับหน้าจอ */
+  background-image: url('/images/village01.png'); /* กำหนดภาพพื้นหลัง */
+  background-size: cover; /* ทำให้ภาพพื้นหลังปรับขนาดเพื่อเต็มจอ */
+  background-repeat: no-repeat; /* ไม่ให้ภาพพื้นหลังทำซ้ำ */
+  background-position: center; /* จัดตำแหน่งภาพพื้นหลังกลางหน้าจอ */
+  z-index: 0; /* ตั้งค่า z-index เป็นค่า 0 เพื่อให้รูปอยู่ข้างหลังข้อความ */
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  
+}
+
+.villageImageTwo {
+  position: relative; /* ทำให้รูปพื้นหลังคงที่ */
+  width: 100%; /* กำหนดความกว้างให้เท่ากับหน้าจอ */
+  height: 100%; /* กำหนดความสูงให้เท่ากับหน้าจอ */
+  background-image: url('/images/village02.png'); /* กำหนดภาพพื้นหลัง */
+  background-size: cover; /* ทำให้ภาพพื้นหลังปรับขนาดเพื่อเต็มจอ */
+  background-repeat: no-repeat; /* ไม่ให้ภาพพื้นหลังทำซ้ำ */
+  background-position: center; /* จัดตำแหน่งภาพพื้นหลังกลางหน้าจอ */
+  z-index: 0; /* ตั้งค่า z-index เป็นค่า 0 เพื่อให้รูปอยู่ข้างหลังข้อความ */
+  background-color: black;
+  filter: brightness(100%) opacity(60%) drop-shadow(10px 10px 12px gray);
+}
+
+.villageImageThree {
+  position: relative; /* ทำให้รูปพื้นหลังคงที่ */
+  width: 100%; /* กำหนดความกว้างให้เท่ากับหน้าจอ */
+  height: 120%; /* กำหนดความสูงให้เท่ากับหน้าจอ */
+  background-image: url('/images/village03.png'); /* กำหนดภาพพื้นหลัง */
+  background-size: cover; /* ทำให้ภาพพื้นหลังปรับขนาดเพื่อเต็มจอ */
+  background-repeat: no-repeat; /* ไม่ให้ภาพพื้นหลังทำซ้ำ */
+  background-position: center; /* จัดตำแหน่งภาพพื้นหลังกลางหน้าจอ */
+  z-index: 0; /* ตั้งค่า z-index เป็นค่า 0 เพื่อให้รูปอยู่ข้างหลังข้อความ */
+  background-color: black;
+  
+}
+
+
+
+.featured01{
+  position: absolute;
+  width: 500px;
+  height: 150px;
+  background-image: url('/images/featured01.png');
+  display: flex; 
+  background-repeat: no-repeat;
+  z-index: 0
+  
+}
+
+.font{
+  font-family: "Libre Baskerville", serif;
+  position: absolute;
+}
+
+.mainfont {
+    
+  font-family: "Libre Baskerville", serif;
+  -webkit-text-stroke: 3px black;
+  color: white;
+  font-size: 5rem; /* ปรับขนาดฟ้อนต์ลงเป็น 80% ของขนาดปกติ */
+  transform: scale(0.9); /* ปรับขนาดโดยการลดขนาดเป็น 80% ของขนาดปกติ */
+}
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.flexitemleft {
+  margin-top: 0%;
+
+  padding: 10px;
+  flex: 50%;
+}
+
+.flexitemright {
+  margin-top: 10%;
+  
+  flex: 50%;
+}
+
+@media (max-width: 800px) {
+  .flexitemleft {
+    flex: 100%;
+  }
+  .flexitemright {
+    flex: 100%;
+    padding-left: 15%;
+    margin-top: -10%;
+  }
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+ 
+}
+@media (min-width: 1500px) and (max-width: 1750px){
+  .flexColumn{
+    margin-left: -3%;
+  }
+}
+
+
+
+.scroll{
+  height: 100vh; /* กำหนดความสูงเท่ากับความสูงของหน้าจอ */
+  overflow-y: scroll; /* เปิดการใช้งานการเลื่อนแนวตั้งเมื่อเนื้อหามากเกิน */
+  box-sizing: border-box;
+  background-color: black;
+  z-index: 0 /* ตั้งค่า z-index เป็นค่าติดลบเพื่อให้สีพื้นหลังอยู่ข้างหลังสุด */;
+}
+
+.stroked {
+  -webkit-text-stroke: 3px black; /* เส้นขอบสีดำขนาด 1px สำหรับเบราว์เซอร์ที่ใช้ WebKit (เช่น Chrome, Safari) */
+  -webkit-text-fill-color: white;
+}
+
+.myfont {
+  font-family: "Libre Baskerville",serif;
+}
+
+.myDiv /*ปรับขนาดฟ้อนโดยปรับที่ scale ฟ้อนจะได้ไม่โดนบีบ*/{
+font-size: 70px; /* ปรับขนาดฟ้อนต์ลงเป็น 70% ของขนาดปกติ */
+transform: scale(0.6); /* ปรับขนาดโดยการลดขนาดเป็น 60% ของขนาดปกติ */
+}
+
+/* เมนูบนขวาของหน้าเว็บ */
+.headerMenu {
+  margin-left: 65em;
+  width: auto;
+  height: 9%;
+  display: flex;
+  flex-direction: row;
+ 
+ 
+  
+
+  border-radius: 2em;
+  background-color: rgba(43, 40, 40, 0.5);
+  
+}
+
+
+
+.headerMenu a {
+  font-family: "Libre Baskerville", serif;
+  text-decoration: none; /* ลบขีดเส้นใต้หน้าเว็บ */
+  font-weight: bold; /* ตัวหนา */
+  margin-left: 60px; /* ระยะห่างระหว่างรายการเมนู */
+  
+  font-size: 150%;
+  color: white;
+}
+
+
+/* ลบขีดเส้นใต้หน้าเว็บเมื่อโฮเวอร์ */
+.headerMenu a:hover {
+  margin-top: 10%;
+  text-decoration: underline;
+}
+
+.headerMenu b:hover {
+  text-decoration: underline;
+}

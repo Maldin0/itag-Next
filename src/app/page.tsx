@@ -1,113 +1,219 @@
+"use server"
+
+import Link from 'next/link'
+import Homestyle from './HomeStyle.module.css';
+// import featured01 from '/images/featured01.png';
+// import featured02 from '/images/featured02.png';
+// import featured03 from '/images/featured03.png';
+// import featured04 from '/images/featured04.png';
+// import featured05 from '/images/featured05.png';
+// import user from '/images/user.png';
+// import bell from '/friends_image/bell.png';
+// import boss from '/friends_image/boss.png';
+// import cho from '/friends_image/cho.png';
+// import gong from '/friends_image/gong.png';
+// import mew from '/friends_image/mew.png';
+// import pupha from '/friends_image/pupha.png';
+// import email from '/images/email.png';
+import React from 'react'
 import Image from 'next/image'
 
-export default function Home() {
+type Props = {}
+
+export default async function Home({}: Props) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className={Homestyle.scroll}> {/*ปรับให้หน้า Home มี scroll bar ให้ทำโค้ดภายใน div นี้*/}
+
+
+            <div className={Homestyle.villageImageOne}> {/*ใส่รูป*/}
+
+
+                <div className={Homestyle.headerMenu}>
+                    <div style={{paddingTop: '2%'}}>
+                        <div style={{display: 'inline-block'}}><Link href="/login">Login</Link></div>
+                        <div style={{display: 'inline-block'}}><Link href="/regis">Sign Up</Link></div>
+                        <div style={{display: 'inline-block', transform: 'translateY(20%) translateX(-30%)'}}><a
+                            href="#"><Image src={ '/images/user.png' } alt='user image'></Image></a></div>
+                    </div>
+                </div>
+
+                <div className={Homestyle.flexContainer}>
+
+                    <div className={Homestyle.flexitemleft}>
+                        <h1 className={Homestyle.mainfont} style={{textAlign: 'center'}}>
+                            IT<br/>
+                            ADVENTURER<br/>
+                            GUILD
+                        </h1>
+                    </div>
+
+
+                    <div className={Homestyle.flexitemright}>
+                        <h1 className={Homestyle.mainfont} style={{whiteSpace: 'nowrap',}}>
+                            Roll your Dice
+                        </h1>
+                        <Image src={'/images/RollNowBorder.png'} style={{marginLeft: '15%', position: 'relative'}} alt='roll now image'></Image>
+                        <h1 className={Homestyle.mainfont}
+                            style={{marginLeft: '22%', transform: 'translateY(-200%)', fontSize: '4rem', color: '#F6AA17', position: 'relative'}}>
+                            NOW
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <p>&nbsp;</p>
+
+
+            <p>
+                <div className={Homestyle.flexContainer}>
+                    <div><h1 className={Homestyle.myfont}
+                             style={{color: 'white', paddingLeft: '39.6vw', display: 'flex', flexWrap: 'nowrap'}}>F e a
+                        t u r e d&nbsp; &nbsp; W e b s i t e</h1></div>
+                </div>
+            </p>
+
+            <p>
+
+                <div className={Homestyle.flexColumn} style={{display: 'inline-block'}}>
+                    <div><Image src={'/images/featured01.png'} style={{paddingLeft: '15.5vw'}}
+                              alt={"Design Character with your head"}></Image></div>
+                    <div className={Homestyle.myfont} style={{paddingLeft: '15.5vw', color: 'white'}}>Design character
+                        with your hand
+                    </div>
+                </div>
+                <div className={Homestyle.flexColumn} style={{display: 'inline-block'}}>
+                    <div><Image src={'/images/featured02.png'} style={{paddingLeft: '15.5vw'}}
+                              alt={"Design Character with your head"}></Image></div>
+                    <div className={Homestyle.myfont} style={{paddingLeft: '15.5vw', color: 'white'}}>Create your
+                        journey
+                    </div>
+                </div>
+
+                <div className={Homestyle.flexColumn} style={{display: 'inline-block'}}>
+                    <div><Image src={'/images/featured03.png'} style={{paddingLeft: '15.5vw'}}
+                              alt={"Design Character with your head"}></Image></div>
+                    <div className={Homestyle.myfont} style={{paddingLeft: '15.5vw', color: 'white'}}>Doing or Create
+                        quest
+                    </div>
+                </div>
+            </p>
+            <p>
+                <div className={Homestyle.flexColumn} style={{display: 'inline-block'}}>
+                    <div><Image src={'/images/featured04.png'} style={{paddingLeft: '30vw'}}
+                              alt={"Design Character with your head"}></Image></div>
+                    <div className={Homestyle.myfont} style={{paddingLeft: '29vw', color: 'white'}}>Role play with
+                        another people
+                    </div>
+                </div>
+
+                <div className={Homestyle.flexColumn} style={{display: 'inline-block'}}>
+                    <div><Image src={'/images/featured05.png'} style={{paddingLeft: '15.5vw'}}
+                              alt={"Design Character with your head"}></Image></div>
+                    <div className={Homestyle.myfont} style={{paddingLeft: '16vw', color: 'white'}}>Roll your destiny
+                        dice!!
+                    </div>
+                </div>
+            </p>
+
+            <div className={Homestyle.villageImageTwo}>
+                <p className={Homestyle.myfont}
+                   style={{color: 'white', fontSize: '3rem', paddingLeft: '39.2vw', transform: 'translateY(50vh)'}}>Start
+                    your journey</p>
+            </div>
+
+
+            <p>&nbsp;</p>
+
+            <p style={{paddingLeft: '42vw'}}>
+                <h1 className={Homestyle.myfont} style={{color: 'white', fontSize: '3rem'}}> Hall of Fame</h1>
+            </p>
+
+            <p>&nbsp;</p>
+
+            <div className={Homestyle.villageImageThree}>
+                <p>
+                    <div className={Homestyle.flexContainer} style={{paddingLeft: '25%', paddingTop: '5%'}}>
+                        <div style={{display: 'inline-block'}}><Image src={'/friends_image/cho.png'} alt = 'cho'></Image></div>
+                        <div
+                            style={{display: 'inline-block', marginLeft: '17%', marginTop: '3%', position: 'absolute'}}>
+                            <h1 className={Homestyle.mainfont}
+                                style={{textAlign: 'center', color: 'white'}}>65070051<br></br>Guild master Croissant
+                            </h1></div>
+                    </div>
+                </p>
+
+                <p>
+                    <div className={Homestyle.flexColumn}
+                         style={{display: 'inline-block', paddingLeft: '10%', paddingTop: '5%'}}>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '2%', marginTop: '1vh', whiteSpace: 'nowrap', position: 'absolute'}}>65070056</h1>
+                        </div>
+                        <div><Image src={'/friends_image/mew.png'} style={{zIndex: '-1'}} alt='mew'></Image></div>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '10%', marginTop: '-4.5vh', whiteSpace: 'nowrap'}}>Plant
+                            corn</h1></div>
+                    </div>
+
+                    <div className={Homestyle.flexColumn} style={{display: 'inline-block', paddingLeft: '7%'}}>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '2%', marginTop: '1vh', whiteSpace: 'nowrap', position: 'absolute'}}>65070015</h1>
+                        </div>
+                        <div><Image src={'/friends_image/gong.png'} style={{zIndex: '-1'}} alt='gong'></Image></div>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '0vw', marginTop: '-4.5vh', whiteSpace: 'nowrap'}}>Sir
+                            Baguette 3rd</h1></div>
+                    </div>
+
+                    <div className={Homestyle.flexColumn} style={{display: 'inline-block', paddingLeft: '7%'}}>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '2%', marginTop: '1vh', whiteSpace: 'nowrap', position: 'absolute'}}>65070011</h1>
+                        </div>
+                        <div><Image src={'/friends_image/bell.png'} style={{zIndex: '-1'}} alt='bell'></Image></div>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '2vw', marginTop: '-4.5vh', whiteSpace: 'nowrap'}}>Inwza007</h1>
+                        </div>
+                    </div>
+
+                    <div className={Homestyle.flexColumn} style={{display: 'inline-block', paddingLeft: '7%'}}>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '2%', marginTop: '1vh', whiteSpace: 'nowrap', position: 'absolute'}}>65070014</h1>
+                        </div>
+                        <div><Image src={'/friends_image/boss.png'} style={{zIndex: '-1'}} alt='boss'></Image></div>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '1vw', marginTop: '-4.5vh', whiteSpace: 'nowrap'}}>Valorant
+                            Player</h1></div>
+                    </div>
+
+                    <div className={Homestyle.flexColumn} style={{display: 'inline-block', paddingLeft: '7%'}}>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '2%', marginTop: '1vh', whiteSpace: 'nowrap', position: 'absolute'}}>65070002</h1>
+                        </div>
+                        <div><Image src={'/friends_image/pupha.png'} style={{zIndex: '-1'}} alt='pupha'></Image></div>
+                        <div><h1 className={Homestyle.myfont}
+                                 style={{fontSize: '1.5rem', paddingLeft: '3vw', marginTop: '-4.5vh', whiteSpace: 'nowrap'}}>ชาวบ้าน
+                            P</h1></div>
+                    </div>
+
+                </p>
+            </div>
+            <p style={{display: 'flex', justifyContent: 'flex-end'}}>
+                <div className={Homestyle.flexColumn}
+                     style={{color: 'white', paddingRight: '5%', alignItems: 'flex-end'}}>
+                    <div>contact us</div>
+
+
+                    <div className={Homestyle.flexContainer} style={{alignItems: 'center'}}>
+                        <p>&nbsp;</p>
+                        <div style={{display: 'inline-block'}}><Image src={'/images/email.png'} alt='email'></Image></div>
+                        <div style={{display: 'inline-block'}}>65070051@kmitl.ac.th</div>
+                    </div>
+
+                </div>
+
+            </p>
+
+
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    );
+  
 }
