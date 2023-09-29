@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.1.13",
+    "@nextui-org/system": "^2.0.10",
     "bcryptjs-react": "^2.4.6",
     "next": "latest",
     "pg": "^8.11.3",
     "pg-promise": "^11.5.4",
     "react": "latest",
     "react-dom": "latest",
+    "react-select": "^5.7.5",
     "sharp": "^0.32.6",
     "uuid": "^9.0.1"
   },

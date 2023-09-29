@@ -20,7 +20,7 @@ export default async function Home({}: Props) {
                         <div style={{display: 'inline-block'}}><Link href="/login">Login</Link></div>
                         <div style={{display: 'inline-block'}}><Link href="/regis">Sign Up</Link></div>
                         <div style={{display: 'inline-block', transform: 'translateY(-50%) translateX(35%)'}}><a
-                            href="#"><Image src={ '/images/user.png' } width="40" height="40" alt='user image'></Image></a></div>
+                            href="#"><Link href="/character"><Image src={ '/images/user.png' } width="40" height="40" alt='user image'></Image></Link></a></div>
                     </div>
                 </div>
 

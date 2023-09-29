@@ -4,7 +4,10 @@ import line from './images/line.png';
 import LoginStyle from "../login/LoginStyle.module.css";
 import Link from 'next/link'
 
-function Regis() {
+type Props = {}
+
+export default async function Regis({ }: Props) {
+    async function Regis() {}
     return (
 
         <div className={RegisStyle.myImages}>
@@ -49,4 +52,3 @@ function Regis() {
     );
 }
 
-export default Regis;
