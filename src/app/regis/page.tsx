@@ -37,7 +37,7 @@ function Regis() {
                         <input placeholder='Password' type='input' className={RegisStyle.font}></input>
                     </div>
                     <p>&nbsp;</p>
-                    <div className={RegisStyle.submit} style={{ marginTop:'-4%'}}>
+                    <div className={LoginStyle.submit} >
                         <button type={'submit'}><a href='#' >Next</a></button>
                     </div>
 
