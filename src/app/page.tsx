@@ -6,12 +6,11 @@ import Homestyle from "./HomeStyle.module.css";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-
 type Props = {};
 
 interface Skill {
   name: string;
-  details? : string;
+  details?: string;
 }
 
 interface BagItem {
@@ -59,7 +58,7 @@ interface CharacterClass {
   name: string;
 }
 
-interface Character { 
+interface Character {
   skills: Skill[];
   bag: BagItem[];
   status: CharacterStatus;
@@ -74,7 +73,7 @@ interface Character {
   class: CharacterClass;
 }
 
-export interface User { 
+export interface User {
   // user: {
   //   _char: Character[];
   //   db: any;
@@ -87,20 +86,20 @@ export interface User {
   message: string;
 }
 
-export default function Home({ }: Props) {
-    const [user, setUser] = React.useState<User | null>(null)
+export default function Home({}: Props) {
+  const [user, setUser] = React.useState<User | null>(null);
 
-    React.useEffect(() => { 
-        async function fetchUser() { 
-            try {
-                const res = await axios.get("http://localhost:8080/users")
-                setUser(res.data);
-            } catch (err) {
-                console.error(err);
-            }
+  React.useEffect(() => {
+    async function fetchUser() {
+      try {
+        const res = await axios.get("http://localhost:8080/users");
+        setUser(res.data);
+      } catch (err) {
+        console.error(err);
       }
-      fetchUser();
-    }, []);
+    }
+    fetchUser();
+  }, []);
 
   return (
     <div className={Homestyle.scroll}>
@@ -112,7 +111,7 @@ export default function Home({ }: Props) {
         <div className={Homestyle.headerMenu}>
           <div style={{ paddingTop: "2%" }}>
             <div>
-              {user && user.message === "Error: User not logged in." && (
+              {user && user.message === "Error: User not logged in." ? (
                 <>
                   <div style={{ marginRight: "10px", display: "inline-block" }}>
                     <Link href="/login">Login</Link>
@@ -120,66 +119,110 @@ export default function Home({ }: Props) {
                   <div style={{ display: "inline-block" }}>
                     <Link href="/regis">Sign Up</Link>
                   </div>
+                  <div
+                    style={{
+                      display: "inline-block",
+                      transform: "translateY(-50%) translateX(35%)",
+                    }}
+                  >
+                    <Link href="/login">
+                      <Image
+                        src={"/images/user.png"}
+                        width="40"
+                        height="40"
+                        alt="user image"
+                      ></Image>
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div
+                    style={{
+                      display: "inline-block",
+                      transform: "translateY(-50%) translateX(100%)",
+                    }}
+                  >
+                    <Link href="/profile">
+                      <Image
+                        src={"/images/user.png"}
+                        width="40"
+                        height="40"
+                        alt="user image"
+                      ></Image>
+                    </Link>
+                  </div>
                 </>
               )}
             </div>
-            <div
-              style={{
-                display: "inline-block",
-                transform: "translateY(-50%) translateX(35%)",
-              }}
-            >
-              <Link href="/profile">
-                <Image
-                  src={"/images/user.png"}
-                  width="40"
-                  height="40"
-                  alt="user image"
-                ></Image>
-              </Link>
-            </div>
           </div>
         </div>
-        <div className={Homestyle.flexContainer}>
-          <div className={Homestyle.flexitemleft}>
-            <h1 className={Homestyle.mainfont} style={{ textAlign: "center" }}>
-              IT
-              <br />
-              ADVENTURER
-              <br />
-              GUILD
-            </h1>
-          </div>
 
-          <div className={Homestyle.flexitemright}>
-            <h1 className={Homestyle.mainfont} style={{ whiteSpace: "nowrap" }}>
-              Roll your Dice
-            </h1>
+        <div>
+          {user && user.message === "Error: User not logged in." ? (
+            <>
+              <div className={Homestyle.flexContainer}>
+                <div className={Homestyle.flexitemleft}>
+                  <h1
+                    className={Homestyle.mainfont}
+                    style={{ textAlign: "center" }}
+                  >
+                    IT
+                    <br />
+                    ADVENTURER
+                    <br />
+                    GUILD
+                  </h1>
+                </div>
 
-            <Image
-              src={"/images/RollNowBorder.png"}
-              style={{ marginLeft: "15%", position: "relative" }}
-              width="400"
-              height="100"
-              alt="roll now image"
-            ></Image>
-            <Link href="/regis">
-              <h1
-                className={Homestyle.mainfont}
-                style={{
-                  marginLeft: "25%",
-                  transform: "translateY(-145%)",
-                  fontSize: "4rem",
-                  color: "#F6AA17",
-                  position: "relative",
-                }}
-              >
-                NOW
-              </h1>
-            </Link>
-          </div>
+                <div className={Homestyle.flexitemright}>
+                  <h1
+                    className={Homestyle.mainfont}
+                    style={{ whiteSpace: "nowrap" }}
+                  >
+                    Roll your Dice
+                  </h1>
+
+                  <Image
+                    src={"/images/RollNowBorder.png"}
+                    style={{ marginLeft: "15%", position: "relative" }}
+                    width="400"
+                    height="100"
+                    alt="roll now image"
+                  ></Image>
+                  <Link href="/regis">
+                    <h1
+                      className={Homestyle.mainfont}
+                      style={{
+                        marginLeft: "25%",
+                        transform: "translateY(-145%)",
+                        fontSize: "4rem",
+                        color: "#F6AA17",
+                        position: "relative",
+                      }}
+                    >
+                      NOW
+                    </h1>
+                  </Link>
+                </div>
+              </div>
+            </>
+          ):(
+            <>
+                <div className={Homestyle.flexitemleft} style={{paddingTop:'30vh'}}>
+                  <h1
+                    className={Homestyle.mainfont}
+                    style={{ textAlign: "center" }}
+                  >
+                    Welcome &nbsp;
+                    {user?.username} !!!
+                  </h1>
+                </div>
+            </>
+          )}
         </div>
       </div>
+
       <p>&nbsp;</p>
       <div>
         <div className={Homestyle.flexContainer}>
@@ -188,7 +231,7 @@ export default function Home({ }: Props) {
               className={Homestyle.myfont}
               style={{
                 color: "white",
-                paddingLeft: "39.6vw",
+                paddingLeft: "43vw",
                 display: "flex",
                 flexWrap: "nowrap",
               }}

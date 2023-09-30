@@ -47,7 +47,7 @@ export default async function Login({ }: Props) {
                     <div className={LoginStyle.line} style={{marginTop:'3%'}} ></div>
 
                     <div className={LoginStyle.supButton} style={{marginTop:'10%'}} >
-                        <button type={'submit'}><a href='#' >Are you new adventurer?</a></button>
+                        <button type={'submit'}><a href='#' >Are you new adventurer? &nbsp; &nbsp;</a></button>
                         <button type={'submit'}><a href='#' >Forgot password?</a></button>
                     </div>
 
