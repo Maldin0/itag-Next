@@ -1,7 +1,7 @@
 "use client";
 
-
 import React from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import LoginStyle from "./LoginStyle.module.css";
 import axios from "axios";
@@ -12,9 +12,7 @@ export default function Login({}: Props) {
   const [usernameOrEmail, setUsernameOrEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
-
-  
-
+  const router = useRouter();
 
   async function handleLogin() {
     try {
@@ -23,28 +21,26 @@ export default function Login({}: Props) {
         usernameOrEmail,
         password,
       });
-
-      if (res.data.user._user_id) {
+      if (res.data.status === "Success") {
         // TODO: Notification then go redirect to home page
-        alert(res.data.message)
-        window.location.href="/";
-
+        alert(res.data.message);
+        router.push("/");
       } else {
         // TODO: Notification the massage then reload the page
-        alert(res.data.message)
-        window.location.href="/login";
+        alert(res.data.message);
+          router.refresh();
       }
     } catch (error) {
       // TODO: Still Noti the massage bitches
-        alert(error)
+        alert(error);
+        router.refresh();
     } finally {
       setLoading(false);
     }
   }
 
-  function handleforgot(){
-    alert('ขนาดเขายังลืมไม่ได้เลย รหัสจะลืมได้ยังไง')
-
+  function handleforgot() {
+    alert("ขนาดเขายังลืมไม่ได้เลย รหัสจะลืมได้ยังไง");
   }
 
   return (
@@ -85,7 +81,7 @@ export default function Login({}: Props) {
 
           <input
             placeholder="E-mail/Username"
-            type="input"
+            type="text"
             className={LoginStyle.inputBox}
             value={usernameOrEmail}
             onChange={(e) => setUsernameOrEmail(e.target.value)}
@@ -95,7 +91,7 @@ export default function Login({}: Props) {
 
           <input
             placeholder="Password"
-            type="input"
+            type="password"
             className={LoginStyle.inputBox}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -110,11 +106,16 @@ export default function Login({}: Props) {
           <div className={LoginStyle.line} style={{ marginTop: "3%" }}></div>
 
           <div className={LoginStyle.supButton} style={{ marginTop: "10%" }}>
-            <button type={"submit"}>
-              <Link href='/regis'>Are you new adventurer?&nbsp;&nbsp;</Link>
+            <button
+              type={"submit"}
+              onClick={() => {
+                router.push("/regis");
+              }}
+            >
+              Are you new adventurer?&nbsp;&nbsp;
             </button>
-            <button type={"submit"}>
-              <a onClick={handleforgot}>Forgot password?</a>
+            <button type={"submit"} onClick={handleforgot}>
+              Forgot password?
             </button>
           </div>
         </div>
