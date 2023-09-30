@@ -1,5 +1,6 @@
 "use client";
 
+
 import React from "react";
 import Link from "next/link";
 import LoginStyle from "./LoginStyle.module.css";
@@ -12,6 +13,9 @@ export default function Login({}: Props) {
   const [password, setPassword] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
 
+  
+
+
   async function handleLogin() {
     try {
       setLoading(true);
@@ -20,16 +24,27 @@ export default function Login({}: Props) {
         password,
       });
 
-      if (res.data._user_id) {
+      if (res.data.user._user_id) {
         // TODO: Notification then go redirect to home page
+        alert(res.data.message)
+        window.location.href="/";
+
       } else {
         // TODO: Notification the massage then reload the page
+        alert(res.data.message)
+        window.location.href="/login";
       }
     } catch (error) {
       // TODO: Still Noti the massage bitches
+        alert(error)
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleforgot(){
+    alert('ขนาดเขายังลืมไม่ได้เลย รหัสจะลืมได้ยังไง')
+
   }
 
   return (
@@ -96,10 +111,10 @@ export default function Login({}: Props) {
 
           <div className={LoginStyle.supButton} style={{ marginTop: "10%" }}>
             <button type={"submit"}>
-              <a href="#">Are you new adventurer?</a>
+              <Link href='/regis'>Are you new adventurer?&nbsp;&nbsp;</Link>
             </button>
             <button type={"submit"}>
-              <a href="#">Forgot password?</a>
+              <a onClick={handleforgot}>Forgot password?</a>
             </button>
           </div>
         </div>

@@ -101,6 +101,19 @@ export default function Home({}: Props) {
     fetchUser();
   }, []);
 
+  async function handleLogout() {
+    const res = await axios.get("http://localhost:8080/users/logout")
+
+    if(res.data) {
+      // TODO: Notification then go redirect to home page
+      alert(res.data.message)
+      window.location.href="/";
+  }
+}
+
+  
+
+
   return (
     <div className={Homestyle.scroll}>
       {" "}
@@ -140,7 +153,7 @@ export default function Home({}: Props) {
                   <div
                     style={{
                       display: "inline-block",
-                      transform: "translateY(-50%) translateX(100%)",
+                      transform: "translateY(-45%) translateX(100%)",
                     }}
                   >
                     <Link href="/profile">
@@ -151,6 +164,18 @@ export default function Home({}: Props) {
                         alt="user image"
                       ></Image>
                     </Link>
+                    
+                    
+                
+                  </div>
+                  <div 
+                    style={{
+                      display: "inline-block",
+                      transform: "translateY(10%) translateX(50%)"
+                    }}
+                  >
+                    <Link href='' onClick={handleLogout}>Logout</Link>
+                   
                   </div>
                 </>
               )}
@@ -209,6 +234,7 @@ export default function Home({}: Props) {
             </>
           ):(
             <>
+                
                 <div className={Homestyle.flexitemleft} style={{paddingTop:'30vh'}}>
                   <h1
                     className={Homestyle.mainfont}
@@ -218,6 +244,8 @@ export default function Home({}: Props) {
                     {user?.username} !!!
                   </h1>
                 </div>
+
+                
             </>
           )}
         </div>
