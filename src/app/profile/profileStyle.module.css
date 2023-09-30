@@ -89,7 +89,7 @@
   position: relative;
   font-size: 1.5em;
   top: 0.5em;
-  left: 13%;
+
 }
 
 .button {
@@ -110,4 +110,45 @@
 .button a {
   color: white;
   text-decoration: none;
+}
+
+
+
+.Clickme button{
+  font-family: "Libre Baskerville", serif;
+  font-size: 12px;
+  color: white;
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: nowrap;
+ 
+}
+
+.flexContainer > div {
+
+  width: 70px;
+  margin-left: 140px;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.Clickme{
+  align-items: center;
+  justify-content: space-between;
+  width: 2em;
+  height: 2em;
+  background-color: black;
+  border-radius: 2em;
+}
+
+.yourModalClass {
+ 
+  padding: 30px;
+  position: absolute;
+  width: 30vw;
+  transform: translate(110%, 70%);
+  background-color: rgb(187, 164, 133);
 }

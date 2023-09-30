@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import RegisStyle from './RegisStyle.module.css'  ;
 import line from './images/line.png';
 import LoginStyle from "../login/LoginStyle.module.css";

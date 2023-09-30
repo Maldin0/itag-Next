@@ -124,7 +124,7 @@ export default function Home({}: Props) {
         <div className={Homestyle.headerMenu}>
           <div style={{ paddingTop: "2%" }}>
             <div>
-              {user && user.message === "Error: User not logged in." ? (
+              {!user?(
                 <>
                   <div style={{ marginRight: "10px", display: "inline-block" }}>
                     <Link href="/login">Login</Link>
@@ -164,9 +164,6 @@ export default function Home({}: Props) {
                         alt="user image"
                       ></Image>
                     </Link>
-                    
-                    
-                
                   </div>
                   <div 
                     style={{
@@ -184,7 +181,7 @@ export default function Home({}: Props) {
         </div>
 
         <div>
-          {user && user.message === "Error: User not logged in." ? (
+          {!user?(
             <>
               <div className={Homestyle.flexContainer}>
                 <div className={Homestyle.flexitemleft}>
