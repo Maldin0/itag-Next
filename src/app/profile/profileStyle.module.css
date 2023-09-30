@@ -61,14 +61,14 @@
 
 .username {
   position: absolute;
-  left: 40%;
+  left: 10%;
   top: 30%;
   font-size: 1.5em;
 }
 
 .email {
   position: absolute;
-  left: 40%;
+  left: 10%;
   top: 50%;
   font-size: 1.5em;
 }
