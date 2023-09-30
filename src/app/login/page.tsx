@@ -32,7 +32,16 @@ export default function Login({}: Props) {
       }
     } catch (error) {
       // TODO: Still Noti the massage bitches
-        alert(error);
+        if (
+          axios.isAxiosError(error) &&
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          alert(error.response.data.message);
+        } else {
+          alert("An unexpected error occurred.");
+        }
         router.refresh();
     } finally {
       setLoading(false);
