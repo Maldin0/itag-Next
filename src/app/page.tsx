@@ -3,91 +3,20 @@
 import axios from "axios";
 import Link from "next/link";
 import Homestyle from "./HomeStyle.module.css";
-import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation'
+import React from "react";
 import Image from "next/image";
 
 type Props = {};
 
-interface Skill {
-  name: string;
-  details?: string;
-}
-
-interface BagItem {
-  name: string;
-  detail: string;
-}
-
-interface CharacterStatus {
-  dex: number;
-  wis: number;
-  int: number;
-  str: number;
-  cha: number;
-  con: number;
-  hp: number;
-}
-
-interface Trait {
-  name: string;
-  detail: string;
-}
-
-interface ClassFeature {
-  name: string;
-  detail: string;
-}
-
-interface Spell {
-  name: string;
-  interval_time: number;
-  duration: number;
-  range: number;
-}
-
-interface Race {
-  traits: Trait[];
-  db: any;
-  name: string;
-}
-
-interface CharacterClass {
-  features: ClassFeature[];
-  spell: Spell[];
-  db: any;
-  name: string;
-}
-
-interface Character {
-  skills: Skill[];
-  bag: BagItem[];
-  status: CharacterStatus;
-  db: any;
-  user_id: number;
-  _char_id: number;
-  name: string;
-  gold: number;
-  background: string;
-  active: boolean;
-  race: Race;
-  class: CharacterClass;
-}
-
-export interface User {
-  // user: {
-  //   _char: Character[];
-  //   db: any;
-  //   _username: string;
-  //   _password: string;
-  //   _email: string;
-  //   _user_id: number;
-  // };
+interface User {
   username?: string;
   message: string;
 }
 
 export default function Home({}: Props) {
   const [user, setUser] = React.useState<User | null>(null);
+  const router = useRouter();
 
   React.useEffect(() => {
     async function fetchUser() {
@@ -107,7 +36,7 @@ export default function Home({}: Props) {
     if(res.data) {
       // TODO: Notification then go redirect to home page
       alert(res.data.message)
-      window.location.href="/";
+      router.refresh();
   }
 }
 
@@ -124,7 +53,7 @@ export default function Home({}: Props) {
         <div className={Homestyle.headerMenu}>
           <div style={{ paddingTop: "2%" }}>
             <div>
-              {user && user.message === "Error: User not logged in." ? (
+              {!user ? (
                 <>
                   <div style={{ marginRight: "10px", display: "inline-block" }}>
                     <Link href="/login">Login</Link>
@@ -138,14 +67,17 @@ export default function Home({}: Props) {
                       transform: "translateY(-50%) translateX(35%)",
                     }}
                   >
-                    <Link href="/login">
+                    <button onClick={() => {
+                      alert("Please login first")
+                      router.push("/login")
+                    }}>
                       <Image
                         src={"/images/user.png"}
                         width="40"
                         height="40"
                         alt="user image"
                       ></Image>
-                    </Link>
+                    </button>
                   </div>
                 </>
               ) : (
@@ -153,17 +85,19 @@ export default function Home({}: Props) {
                   <div
                     style={{
                       display: "inline-block",
-                      transform: "translateY(-45%) translateX(100%)",
+                      transform: "translateY(-35%) translateX(100%)",
                     }}
                   >
-                    <Link href="/profile">
+                      <button onClick={() => {
+                        router.push("/profile")
+                    }}>
                       <Image
                         src={"/images/user.png"}
                         width="40"
                         height="40"
                         alt="user image"
                       ></Image>
-                    </Link>
+                    </button>
                     
                     
                 
@@ -184,7 +118,7 @@ export default function Home({}: Props) {
         </div>
 
         <div>
-          {user && user.message === "Error: User not logged in." ? (
+          {!user ? (
             <>
               <div className={Homestyle.flexContainer}>
                 <div className={Homestyle.flexitemleft}>
