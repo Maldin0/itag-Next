@@ -51,7 +51,7 @@ export default function createcharacter({ }: Props) {
                         <div className={CreateChaStyle.line} ></div>
 
                         <div className={LoginStyle.inputBox} style={{paddingTop:'10%',alignSelf:'flex-start',paddingLeft:'20%'}}>
-                            <input placeholder='Name' type='input' className={LoginStyle.input}></input>
+                            <input placeholder='Name' type='input' className={LoginStyle.inputs}></input>
                         </div>
         
                         <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'20%'}}>

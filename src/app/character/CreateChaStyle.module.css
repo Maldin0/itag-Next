@@ -215,8 +215,9 @@
   display: flex;
   cursor: pointer;
   align-items: left;
-  
+  background-color: white;
 }
+
 .selectbtn{
   border: 0.3rem solid black;
   width: 400px;
@@ -235,7 +236,7 @@
   border-radius: 10px;
   margin-top: -70px;
   padding: 5px;
-  margin-left: 5vw;
+  margin-left: 18vw;
 }
 
 .wrapper.active .content{
@@ -246,7 +247,8 @@
 
 .options li{
   height: 80px;
-  padding: 0 13px;
+  margin-left: 10px;
+  padding: 0 25em;
 }
 
 .options li:hover{
