@@ -76,7 +76,6 @@ export default function createcharacter({ }: Props) {
                                 <DropdownItem className={CreateChaStyle.options} key="Gnome">Gnome</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
-                        
 
                         <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'20%'}}>
                             <DropdownTrigger className={CreateChaStyle.selectbtn}>
@@ -100,14 +99,8 @@ export default function createcharacter({ }: Props) {
 
                         <div className={LoginStyle.submit} style={{marginTop:'10%'}} >
                             <button type={'submit'} ><a href='#' >Create Character</a></button>
-                            
                         </div>
-
                     </div>
-                   
-
-                    
-
                 </div>
             </div>
         </div>
