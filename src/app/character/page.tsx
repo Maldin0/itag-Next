@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import CreateChaStyle from './CreateChaStyle.module.css'  ;
 import LoginStyle from '../login/LoginStyle.module.css'
-import line from './images/line.png';
+//import line from './images/line.png';
 import {log} from "util";
 import {
     Dropdown,
@@ -20,10 +20,15 @@ type Props = {}
 
 export default function createcharacter({ }: Props) {
     const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Races"]));
+    const [selectedKey, setSelectedKey] = React.useState(new Set(["Class"]));
 
     const selectedValue = React.useMemo(
         () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
         [selectedKeys]
+    );
+    const selectedValues = React.useMemo(
+        () => Array.from(selectedKey).join(", ").replaceAll("_", " "),
+        [selectedKey]
     );
     return (
         
@@ -46,7 +51,7 @@ export default function createcharacter({ }: Props) {
                         <div className={CreateChaStyle.line} ></div>
 
                         <div className={LoginStyle.inputBox} style={{paddingTop:'10%',alignSelf:'flex-start',paddingLeft:'20%'}}>
-                            <input placeholder='Name' type='input' className={CreateChaStyle.font}></input>
+                            <input placeholder='Name' type='input' className={LoginStyle.input}></input>
                         </div>
         
                         <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'20%'}}>
@@ -59,7 +64,7 @@ export default function createcharacter({ }: Props) {
                             </DropdownTrigger>
                             <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
                                 variant="flat"
-                                disallowEmptySelection={false}
+                                disallowEmptySelection={true}
                                 selectionMode="single"
                                 selectedKeys={selectedKeys}
                                 onSelectionChange={setSelectedKeys}
@@ -73,21 +78,25 @@ export default function createcharacter({ }: Props) {
                         </Dropdown>
                         
 
-                        <div className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'20%'}}>
-                            <div className={CreateChaStyle.selectbtn}>
-                                <span>Classes</span>
-                                
-                            </div>
-                            <div className={CreateChaStyle.content}>
-                                <ul className={CreateChaStyle.options}>
-                                    <li>Barbarian</li>
-                                    <li>Paladin</li>
-                                    <li>Bard</li>
-                                    <li>Mage</li>
-                                    <li>Rogue</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'20%'}}>
+                            <DropdownTrigger className={CreateChaStyle.selectbtn}>
+                                <Button variant="bordered">
+                                    {selectedValues}
+                                </Button>
+                            </DropdownTrigger>
+                            <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
+                                          variant="flat" disallowEmptySelection={true}
+                                          selectionMode="single"
+                                          selectedKeys={selectedKey}
+                                          onSelectionChange={setSelectedKey}
+                            >
+                                    <DropdownItem className={CreateChaStyle.options} key="Barbarian">Barbarian</DropdownItem>
+                                    <DropdownItem className={CreateChaStyle.options} key="Paladin">Paladin</DropdownItem>
+                                    <DropdownItem className={CreateChaStyle.options} key="Bard">Bard</DropdownItem>
+                                    <DropdownItem className={CreateChaStyle.options} key="Mage">Mage</DropdownItem>
+                                    <DropdownItem className={CreateChaStyle.options} key="Rogue">Rogue</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
 
                         <div className={LoginStyle.submit} style={{marginTop:'10%'}} >
                             <button type={'submit'} ><a href='#' >Create Character</a></button>

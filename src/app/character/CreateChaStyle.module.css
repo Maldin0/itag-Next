@@ -60,6 +60,10 @@
   transform: translateY(10%);
 }
 
+.box .inputBox input {
+  background-color: transparent;
+}
+
 .box .submit{
   text-align: center;
   transform: translateY(180%);
@@ -240,11 +244,8 @@
 }
 
 
-
-
-
 .options li{
-  height: 40px;
+  height: 80px;
   padding: 0 13px;
 }
 
