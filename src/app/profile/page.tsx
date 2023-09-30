@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 import profileStyle from './profileStyle.module.css'  ;
 import line from './images/line.png';
 import {log} from "util";
@@ -30,7 +31,7 @@ export default async function Profile({ }: Props) {
                 <div className={profileStyle.char}>Your character</div>
 
                 <div className={profileStyle.button} style={{marginTop: '10%',marginLeft:'40vw'}}>
-                    <button type={'submit'} style={{marginTop: '5%'}}><a href='#'>create</a></button>
+                <Link href="/character"><button type={'submit'} style={{marginTop: '5%'}}><a href='#'>create</a></button></Link>
                 </div>
 
             </div>
