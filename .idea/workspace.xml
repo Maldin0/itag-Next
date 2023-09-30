@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="74a9c9bf-dac1-4ab3-9f18-8327b61ecc6e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/character/CreateChaStyle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/character/CreateChaStyle.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/character/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/character/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/login/LoginStyle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/LoginStyle.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/regis/RegisStyle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/regis/RegisStyle.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/regis/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/regis/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Merging master",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -50,6 +55,7 @@
       <map>
         <entry key="com.haulmont.rcb.reactComponents" value="false" />
         <entry key="com.haulmont.rcb.reactInspector" value="false" />
+        <entry key="com.haulmont.rcb.storybook" value="false" />
       </map>
     </option>
   </component>
@@ -63,6 +69,7 @@
       <updated>1695977453545</updated>
       <workItem from="1695977459292" duration="904000" />
       <workItem from="1696069731621" duration="8431000" />
+      <workItem from="1696081179834" duration="144000" />
     </task>
     <servers />
   </component>
