@@ -152,3 +152,14 @@
   transform: translate(110%, 70%);
   background-color: rgb(187, 164, 133);
 }
+
+.modaldetails{
+  padding-top: 30px;
+  font-family: "Libre Baskerville", serif;
+  font-size: 18px;
+}
+
+.modaldetails p{
+  padding-top: 10px;
+
+}
