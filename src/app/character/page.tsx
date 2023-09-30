@@ -50,52 +50,55 @@ export default function createcharacter({ }: Props) {
                         </div>
                         <div className={CreateChaStyle.line} ></div>
 
-                        <div className={LoginStyle.inputBox} style={{paddingTop:'10%',alignSelf:'flex-start',paddingLeft:'20%'}}>
-                            <input placeholder='Name' type='input' className={LoginStyle.inputs}></input>
-                        </div>
-        
-                        <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'20%'}}>
-                            <DropdownTrigger className={CreateChaStyle.selectbtn}>
-                                <Button 
-                                variant="bordered" 
+                        <div style={{paddingTop:'50px'}}></div>
+                        <input placeholder='Name' type='input' className={CreateChaStyle.inputBox}></input>
+                        
+                        <div style={{paddingTop:'30px'}}>
+                            <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'25%'}}>
+                                <DropdownTrigger className={CreateChaStyle.selectbtn}>
+                                    <Button 
+                                    variant="bordered" 
+                                    >
+                                        {selectedValue}
+                                    </Button>
+                                </DropdownTrigger>
+                                <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
+                                    variant="flat"
+                                    disallowEmptySelection={true}
+                                    selectionMode="single"
+                                    selectedKeys={selectedKeys}
+                                    onSelectionChange={setSelectedKeys}
                                 >
-                                    {selectedValue}
-                                </Button>
-                            </DropdownTrigger>
-                            <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
-                                variant="flat"
-                                disallowEmptySelection={true}
-                                selectionMode="single"
-                                selectedKeys={selectedKeys}
-                                onSelectionChange={setSelectedKeys}
-                             >
-                                <DropdownItem className={CreateChaStyle.options} key="Human">Human</DropdownItem>
-                                <DropdownItem className={CreateChaStyle.options} key="Elf">Elf</DropdownItem>
-                                <DropdownItem className={CreateChaStyle.options}  key="Dwarf">Dwarf</DropdownItem>
-                                <DropdownItem className={CreateChaStyle.options} key="Orc">Orc</DropdownItem>
-                                <DropdownItem className={CreateChaStyle.options} key="Gnome">Gnome</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
+                                    <DropdownItem className={CreateChaStyle.options} key="Human">Human</DropdownItem>
+                                    <DropdownItem className={CreateChaStyle.options} key="Elf">Elf</DropdownItem>
+                                    <DropdownItem className={CreateChaStyle.options}  key="Dwarf">Dwarf</DropdownItem>
+                                    <DropdownItem className={CreateChaStyle.options} key="Orc">Orc</DropdownItem>
+                                    <DropdownItem className={CreateChaStyle.options} key="Gnome">Gnome</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                        </div>
 
-                        <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'20%'}}>
-                            <DropdownTrigger className={CreateChaStyle.selectbtn}>
-                                <Button variant="bordered">
-                                    {selectedValues}
-                                </Button>
-                            </DropdownTrigger>
-                            <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
-                                          variant="flat" disallowEmptySelection={true}
-                                          selectionMode="single"
-                                          selectedKeys={selectedKey}
-                                          onSelectionChange={setSelectedKey}
-                            >
-                                    <DropdownItem className={CreateChaStyle.options} key="Barbarian">Barbarian</DropdownItem>
-                                    <DropdownItem className={CreateChaStyle.options} key="Paladin">Paladin</DropdownItem>
-                                    <DropdownItem className={CreateChaStyle.options} key="Bard">Bard</DropdownItem>
-                                    <DropdownItem className={CreateChaStyle.options} key="Mage">Mage</DropdownItem>
-                                    <DropdownItem className={CreateChaStyle.options} key="Rogue">Rogue</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
+                        <div style={{paddingTop:'30px'}}>
+                            <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'25%'}}>
+                                <DropdownTrigger className={CreateChaStyle.selectbtn}>
+                                    <Button variant="bordered">
+                                        {selectedValues}
+                                    </Button>
+                                </DropdownTrigger>
+                                <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
+                                            variant="flat" disallowEmptySelection={true}
+                                            selectionMode="single"
+                                            selectedKeys={selectedKey}
+                                            onSelectionChange={setSelectedKey}
+                                >
+                                        <DropdownItem className={CreateChaStyle.options} key="Barbarian">Barbarian</DropdownItem>
+                                        <DropdownItem className={CreateChaStyle.options} key="Paladin">Paladin</DropdownItem>
+                                        <DropdownItem className={CreateChaStyle.options} key="Bard">Bard</DropdownItem>
+                                        <DropdownItem className={CreateChaStyle.options} key="Mage">Mage</DropdownItem>
+                                        <DropdownItem className={CreateChaStyle.options} key="Rogue">Rogue</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                        </div>
 
                         <div className={LoginStyle.submit} style={{marginTop:'10%'}} >
                             <button type={'submit'} ><a href='#' >Create Character</a></button>
