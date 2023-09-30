@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import LoginStyle from './LoginStyle.module.css'
 
+
 type Props = {}
 
 
@@ -31,13 +32,13 @@ export default async function Login({ }: Props) {
                         <h1 className={LoginStyle.font} >IT ADVENTURERS<br/>GUILD</h1>
                     </div>
 
-                    <div className={LoginStyle.inputBox} style={{paddingTop: '1%' }}>
-                        <input placeholder='E-mail/Username' type='input' className={LoginStyle.font}></input>
-                    </div>
+                    
+                    <input placeholder='E-mail/Username' type='input' className={LoginStyle.inputBox}></input>
+                    
                     <p>&nbsp;</p>
-                    <div className={LoginStyle.inputBox} style={{paddingTop: '1%' }}>
-                        <input placeholder='Password' type='input' className={LoginStyle.font}></input>
-                    </div>
+                    
+                    <input placeholder='Password' type='input' className={LoginStyle.inputBox}></input>
+                    
 
                     <div className={LoginStyle.submit} style={{ marginTop:'-5%'}}>
                         <button type={'submit'}><a href="#" >Login</a></button>
