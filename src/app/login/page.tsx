@@ -37,7 +37,7 @@ export default async function Login({ }: Props) {
                     
                     <p>&nbsp;</p>
                     
-                        <input placeholder='Password' type='input' className={LoginStyle.inputBox}></input>
+                    <input placeholder='Password' type='input' className={LoginStyle.inputBox}></input>
                     
 
                     <div className={LoginStyle.submit} style={{ marginTop:'-5%'}}>
