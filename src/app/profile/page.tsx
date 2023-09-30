@@ -30,9 +30,9 @@ export default async function Profile({ }: Props) {
 
                 <div className={profileStyle.char}>Your character</div>
 
-                <div className={profileStyle.button} style={{marginTop: '10%',marginLeft:'40vw'}}>
-                <Link href="/character"><button type={'submit'} style={{marginTop: '5%'}}><a href='#'>create</a></button></Link>
-                </div>
+                <Link href="/character"><div className={profileStyle.button} style={{marginTop: '10%',marginLeft:'40vw',position:'absolute'}}>
+                <button type={'submit'} style={{marginTop: '5%'}}><a href='#'>create</a></button>
+                </div></Link>
 
             </div>
         </div>

@@ -119,11 +119,12 @@
     color: black;
     text-decoration: none;
 }
-
-.inputBox .input{
-    background-color: transparent;
-    margin-left: -60px;
-    width: 465px;
-    height: 50px;
+.box .inputBox {
+    width: 50%;
+    height: 10%;
+    padding-left: 10px;
+    text-align: left;
+    transform: translateY(10%);
     border: 0.3rem solid black;
-}
+    -webkit-border-radius: 35em;
+  }

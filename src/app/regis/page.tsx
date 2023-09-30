@@ -27,18 +27,18 @@ export default async function Regis({ }: Props) {
 
                     <div className={RegisStyle.line} style={{paddingTop:'0%'}} ></div>
 
-                    <div className={RegisStyle.inputBox} style={{paddingTop:'1%'}}>
-                        <input placeholder='E-mail' type='input' className={RegisStyle.font}></input>
-                    </div>
+                   
+                    <input placeholder='E-mail' type='input' className={RegisStyle.inputBox}></input>
+                    
                     <p>&nbsp;</p>
-                    <div className={RegisStyle.inputBox} style={{paddingTop:'1%'}}>
-                        <input placeholder='Username' type='input' className={RegisStyle.font}></input>
-                    </div>
+                    
+                    <input placeholder='Username' type='input' className={RegisStyle.inputBox}></input>
+                    
                     <p>&nbsp;</p>
 
-                    <div className={RegisStyle.inputBox} style={{paddingTop: '1%' }}>
-                        <input placeholder='Password' type='input' className={RegisStyle.font}></input>
-                    </div>
+                   
+                    <input placeholder='Password' type='input' className={RegisStyle.inputBox}></input>
+                    
                     <p>&nbsp;</p>
                     <div className={LoginStyle.submit} >
                         <button type={'submit'}><a href='#' >Next</a></button>
