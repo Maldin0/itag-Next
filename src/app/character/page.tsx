@@ -59,7 +59,7 @@ export default function createcharacter({ }: Props) {
                             </DropdownTrigger>
                             <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
                                 variant="flat"
-                                disallowEmptySelection={false}
+                                disallowEmptySelection={true}
                                 selectionMode="single"
                                 selectedKeys={selectedKeys}
                                 onSelectionChange={setSelectedKeys}

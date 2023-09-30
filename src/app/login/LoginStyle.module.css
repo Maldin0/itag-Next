@@ -119,3 +119,12 @@
     color: black;
     text-decoration: none;
 }
+.box .inputBox {
+    width: 50%;
+    height: 10%;
+    padding-left: 10px;
+    text-align: left;
+    transform: translateY(10%);
+    border: 0.3rem solid black;
+    -webkit-border-radius: 35em;
+  }
