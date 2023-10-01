@@ -534,11 +534,12 @@ export default function Profile({}: Props) {
                       </ModalHeader>
                       <ModalBody>
                         <p>&nbsp;</p>
-                        <Table >
+                        <Table className={profileStyle.centerTable}>
                           <TableHeader>
-                            <TableColumn style={{paddingTop:'70px',}}>ITEM</TableColumn>
-                            <TableColumn style={{paddingTop:'70px',paddingLeft:'15vw',position:'absolute'}}>DETAIL</TableColumn>
-                            <TableColumn style={{paddingTop:'70px',paddingLeft:'40vw',position:'absolute'}}>ACTION</TableColumn>
+                            <TableColumn >&nbsp;</TableColumn>
+                            <TableColumn >&nbsp;</TableColumn>
+                            <TableColumn >&nbsp;</TableColumn>
+                            
                           </TableHeader>
                           <TableBody>
                             {user?.user._char[_char_id]?.bag.map(
@@ -547,18 +548,15 @@ export default function Profile({}: Props) {
                                   key={index}
                                   className={profileStyle.modaltable}
                                 >
-                                  <TableCell style={{ paddingTop: "30px" }}>
+                                  <TableCell>
                                     {item.name}
                                   </TableCell>
                                   <TableCell
-                                    style={{
-                                      paddingTop: "30px",
-                                      paddingLeft: "8vw",
-                                    }}
+                                    style={{ paddingLeft:"6vw" }}
                                   >
                                     {item.detail}
                                   </TableCell>
-                                  <TableCell style={{ paddingTop: "30px",paddingLeft:"10vw" }}>
+                                  <TableCell style={{ paddingTop: "5px",paddingLeft:"5vw" }}>
                                     <div
                                       className={profileStyle.Clickme}
                                       onClick={() => {
@@ -577,18 +575,23 @@ export default function Profile({}: Props) {
                                     >
                                       <button>Delete</button>
                                     </div>
+                                    
                                   </TableCell>
                                 </TableRow>
                               )
                             )}
-                          </TableBody>
+                          </TableBody>     
                         </Table>
                       </ModalBody>
-                      <ModalFooter></ModalFooter>
+                     
                     </>
+                  
                   )}
+                  
                 </ModalContent>
+                
               </Modal>
+              
             </div>
           </div>
         ))}

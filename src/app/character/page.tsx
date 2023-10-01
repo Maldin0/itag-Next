@@ -85,7 +85,7 @@ export default function createcharacter({ }: Props) {
                                         {selectedValues}
                                     </Button>
                                 </DropdownTrigger>
-                                <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
+                                <DropdownMenu className={CreateChaStyle.content} 
                                             variant="flat" disallowEmptySelection={true}
                                             selectionMode="single"
                                             selectedKeys={selectedKey}
@@ -99,6 +99,9 @@ export default function createcharacter({ }: Props) {
                                 </DropdownMenu>
                             </Dropdown>
                         </div>
+
+                        <div style={{paddingTop:'20px'}}></div>
+                        <button  className={CreateChaStyle.inputBox} style={{}}>Click to RandomStats</button>
 
                         <div className={LoginStyle.submit} style={{marginTop:'10%'}} >
                             <button type={'submit'} ><a href='#' >Create Character</a></button>

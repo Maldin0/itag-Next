@@ -179,6 +179,12 @@
 
 }
 
+.centerTable {
+  margin: auto;
+  text-align: center;
+  padding: 100px;
+}
+
 
 .modaltable{
  
