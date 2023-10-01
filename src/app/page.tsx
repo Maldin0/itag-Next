@@ -33,9 +33,12 @@ export default function Home({}: Props) {
     const res = await axios.get("http://localhost:8080/users/logout")
 
     if(res.data) {
-      // TODO: Notification then go redirect to home page
+      
       alert(res.data.message)
-      router.refresh()
+      await fetchUser();
+      
+
+      window.location.reload();
   }
 }
 
