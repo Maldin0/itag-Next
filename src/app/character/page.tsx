@@ -30,6 +30,23 @@ export default function createcharacter({ }: Props) {
         () => Array.from(selectedKey).join(", ").replaceAll("_", " "),
         [selectedKey]
     );
+
+    const allRace = {
+        "Human":1,
+        "Elf":2,
+        "Dwarf":3,
+        "Orc":4,
+        "Gnome":5
+    }
+
+    const allClass = {
+        "Barbarian":1,
+        "Paladin":2,
+        "Bard":3,
+        "Mage":4,
+        "Rogue":5
+    }
+    
     return (
         
         <div style={{position:'fixed',width:'100%',height:'100%', backgroundSize: 'cover',backgroundRepeat: 'repeat',backgroundPosition: 'center'}}>

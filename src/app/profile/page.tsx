@@ -184,8 +184,8 @@ export default function Profile({}: Props) {
               left: "3%",
               color: "White",
             }}
-          >
-            ITAG
+          ><Link href="/" style={{ textDecoration: "none", color: "white" }} className={profileStyle.topfont} >ITAG</Link>
+
           </h1>
         </div>
 
