@@ -121,7 +121,7 @@ export default function Profile({}: Props) {
   const [opendeleteCharacter, setOpendeleteCharacter] =
     useState<Number | null>(null);
 
-    const allitems: { [key: string]: number } = {
+  const allitems: { [key: string]: number } = {
     "Health Potion" : 1,
     "Antidote" : 2,
     "Axe" : 3,
@@ -160,7 +160,7 @@ export default function Profile({}: Props) {
         error.response &&
         error.response.data &&
         error.response.data.message &&
-        error.response.data.message === "Character already has the specified item.") 
+        error.response.data.message === "Error: Character already has the specified item.") 
        {
         alert("จะอยากได้ซ้ำไปทำไม ทีคนเก่าไม่เห็นอยากได้แกเลย :(");
       } else if (
@@ -178,7 +178,35 @@ export default function Profile({}: Props) {
       setLoading(false);
     }
   }
-
+  async function handleDelete(char_id: Number) {
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/users/characters/delete",
+        {
+          char_id: char_id,
+        }
+      );
+      if (res.data.status === "Success") {
+        alert(res.data.message);
+        fetchUser();
+      } else {
+        alert(res.data.message);
+        fetchUser();
+      }
+    } catch (error) {
+      if (
+        axios.isAxiosError(error) &&
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        alert(error.response.data.message);
+      } else {
+        alert("An unexpected error occurred.");
+      }
+      fetchUser();
+    }
+  }
   async function handleRemove(char_id: Number, item_id: Number) {
     try {
       const res = await axios.post(
@@ -668,7 +696,9 @@ export default function Profile({}: Props) {
                         </Dropdown>
                         <div style={{paddingLeft:'4vw'}}>
                         <button className={profileStyle.Addme} onClick={()=>{
-                          handleAdd(char_id,allitems[selectedItems])
+                        
+                          console.log(character._char_id,allitems[selectedItems])
+                          handleAdd(character._char_id,allitems[selectedItems])
                         }} >ADD</button>
                         </div>
                       </ModalFooter>
@@ -703,7 +733,7 @@ export default function Profile({}: Props) {
                           <div  className={profileStyle.font}  style={{fontSize: "2rem",paddingLeft:'25vw',position:'absolute'}}> Are you sure ?</div>
                         </ModalBody>
                         <ModalFooter style={{paddingTop:'15vh',paddingLeft:'25vw'}}>
-                          <Button className={profileStyle.Deleteme} onPress={onClose}>
+                          <Button className={profileStyle.Deleteme} onClick = {()=>{handleDelete(character._char_id)}} onPress={onClose}>
                             DELETE
                           </Button>
                           <div style={{paddingLeft:'2vw'}}>

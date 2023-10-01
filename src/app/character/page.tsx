@@ -146,7 +146,6 @@ export default function createcharacter({ }: Props) {
         "Mage":4,
         "Rogue":5
     }
-    
     const generateRandomNumbers = () => {
         let nums: number[] = [];
         let sum = 0;
@@ -250,7 +249,7 @@ export default function createcharacter({ }: Props) {
                                
                                 <p style={{paddingTop:'5px'}}>
                                      
-                                    <textarea rows={'5'} cols={'50'}></textarea>
+                                    <textarea rows={5} cols={50}></textarea>
                                 </p>
                             </div>
                             <div className={LoginStyle.submit} style={{marginTop:'2%'}} >
