@@ -99,7 +99,8 @@ export default function createcharacter({ }: Props) {
     const [characterName, setCharacterName] = useState("");
     const [selectedRace, setSelectedRace] = useState("");
     const [selectedClass, setSelectedClass] = useState("");
-  
+    const races = ["Human", "Elf", "Dwarf", "Orc", "Gnome"];
+    const classes = ["Barbarian","Paladin","Bard","Mage", "Rogue"];
   
 
 
@@ -199,11 +200,15 @@ export default function createcharacter({ }: Props) {
                                         </Button>
                                     </DropdownTrigger>
                                     <DropdownMenu className={CreateChaStyle.content}>
-                                        <DropdownItem className={CreateChaStyle.options} key="Human" onClick={() => setSelectedRace("Human")} >Human</DropdownItem>
-                                        <DropdownItem className={CreateChaStyle.options} key="Elf" onClick={() => setSelectedRace("Elf")}>Elf</DropdownItem>
-                                        <DropdownItem className={CreateChaStyle.options}  key="Dwarf" onClick={() => setSelectedRace("Dwarf")}>Dwarf</DropdownItem>
-                                        <DropdownItem className={CreateChaStyle.options} key="Orc" onClick={() => setSelectedRace("Orc")}>Orc</DropdownItem>
-                                        <DropdownItem className={CreateChaStyle.options} key="Gnome" onClick={() => setSelectedRace("Gnome")}>Gnome</DropdownItem>
+                                        {races.map(race => (
+                                        <DropdownItem 
+                                            className={CreateChaStyle.options}
+                                            key={race} 
+                                            onClick={() => setSelectedRace(race)}
+                                        >
+                                            {race}
+                                        </DropdownItem>
+                                        ))}
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
@@ -216,11 +221,15 @@ export default function createcharacter({ }: Props) {
                                         </Button>
                                     </DropdownTrigger>
                                     <DropdownMenu className={CreateChaStyle.content}>
-                                            <DropdownItem className={CreateChaStyle.options} key="Barbarian" onClick={() => setSelectedClass("Barbarian")}>Barbarian</DropdownItem>
-                                            <DropdownItem className={CreateChaStyle.options} key="Paladin" onClick={() => setSelectedClass("Paladin")}>Paladin</DropdownItem>
-                                            <DropdownItem className={CreateChaStyle.options} key="Bard" onClick={() => setSelectedClass("Bard")}>Bard</DropdownItem>
-                                            <DropdownItem className={CreateChaStyle.options} key="Mage" onClick={() => setSelectedClass("Mage")}>Mage</DropdownItem>
-                                            <DropdownItem className={CreateChaStyle.options} key="Rogue" onClick={() => setSelectedClass("Rogue")}>Rogue</DropdownItem>
+                                        {races.map(classes => (
+                                            <DropdownItem 
+                                                className={CreateChaStyle.options}
+                                                key={classes} 
+                                                onClick={() => setSelectedClass(classes)}
+                                            >
+                                                {classes}
+                                            </DropdownItem>
+                                        ))}
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
