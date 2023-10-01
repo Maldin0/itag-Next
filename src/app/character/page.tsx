@@ -3,16 +3,17 @@ import React, { useState } from 'react';
 import CreateChaStyle from './CreateChaStyle.module.css'  ;
 import LoginStyle from '../login/LoginStyle.module.css';
 import axios from "axios";
+import { useRouter } from 'next/navigation';
 
 
 import {
     Dropdown,
     DropdownTrigger,
     DropdownMenu,
-    DropdownSection,
     DropdownItem,
     Button
   } from "@nextui-org/react";
+import Link from 'next/link';
 
 
 type Props = {}
@@ -95,42 +96,15 @@ interface Skill {
   }
 
 
-export default function createcharacter({ }: Props) {
-    const [characterName, setCharacterName] = useState("");
-    const [selectedRace, setSelectedRace] = useState("");
-    const [selectedClass, setSelectedClass] = useState("");
- 
-  
-
-
-
-
-    const handleCreate = async () => {
-        try {
-            const payload = {
-                race: selectedRace,
-                class: selectedClass,
-                name: characterName,
-            };
-    
-            const response = await axios.post("http://localhost:8080/users/characters/create", payload);
-    
-            if (response.data && response.data.success) {
-                alert("Character created successfully!");
-                // อัปเดต UI หรือ redirect ถ้าต้องการ
-            } else {
-                alert("Error creating character.");
-            }
-        } catch (error) {
-            console.error("There was an error creating the character:", error);
-            alert("Error creating character.");
-        }
-    };
-    
+export default function Createcharacter({ }: Props) {
+    const router = useRouter();
+    const [characterName, setCharacterName] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+    const [selectedRace, setSelectedRace] = useState<string>("");
+    const [selectedClass, setSelectedClass] = useState<string>("");
+    const [characterBG, setCharacterBG] = useState<string>("");
     const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
-
-
-    const allRace = {
+    const allRace: { [key: string]: number } = {
         "Human":1,
         "Elf":2,
         "Dwarf":3,
@@ -138,13 +112,15 @@ export default function createcharacter({ }: Props) {
         "Gnome":5
     }
 
-    const allClass = {
+    const allClass : { [key: string]: number }= {
         "Barbarian":1,
         "Paladin":2,
         "Bard":3,
         "Mage":4,
         "Rogue":5
     }
+
+
     const generateRandomNumbers = () => {
         let nums: number[] = [];
         let sum = 0;
@@ -166,14 +142,78 @@ export default function createcharacter({ }: Props) {
     
         setRandomNumbers(nums);
     };
+
+    React.useEffect(()=>{
+        generateRandomNumbers();
+    }, []);
+
+    async function HDcreateCharacter(characterName: string, selectedRace: string, selectedClass: string, characterBG: string, status: number[]) {
+        try {
+            setLoading(true);
+            const res = await axios.post("http://localhost:8080/users/characters/create", 
+                {
+                    race_id: allRace[selectedRace],
+                    class_id: allClass[selectedClass],
+                    name: characterName,
+                    background: characterBG,
+                    dex: status[0],
+                    wis: status[1],
+                    int: status[2],
+                    str: status[3],
+                    cha: status[4],
+                    con: status[5],
+                    hp: 10,
+                    gold: 20
+                }
+            );
+            console.log(res.data);
+            if (res.data.status === "Success") {
+                alert(res.data.message);
+                router.push("/profile");
+            } else {
+                alert(res.data.message);
+                window.location.reload();
+            }
+        } catch (error) {
+            if (
+                axios.isAxiosError(error) &&
+                error.response &&
+                error.response.data &&
+                error.response.data.message
+            ) {
+                alert(error.response.data.message);
+            } else {
+                alert("An unexpected error occurred.");
+            }
+            window.location.reload();
+        } finally {
+            setLoading(false);
+        }
+    }
+
     return (
         <div className={CreateChaStyle.scroll}>
             <div style={{width:'100%',height:'100%', backgroundSize: 'cover',backgroundRepeat: 'repeat',backgroundPosition: 'center'}}>
                 
                     <div style={{position: 'relative', display: 'flex'}}>
                         <div className={CreateChaStyle.topline}></div>
-                        <h1 className={CreateChaStyle.topfont}
-                            style={{position: 'absolute', top: '20%', left: '3%', color: 'White'}}>ITAG</h1>
+                        <h1
+            className={LoginStyle.topfont}
+            style={{
+              position: "absolute",
+              top: "20%",
+              left: "3%",
+              color: "white",
+            }}
+          >
+            <Link
+              href="/"
+              style={{ textDecoration: "none", color: "white" }}
+              className={LoginStyle.topfont}
+            >
+              ITAG
+            </Link>
+                    </h1>
                     </div>
 
                     <div className={CreateChaStyle.box}  style={{display:'flex', flexDirection:'column'}}>
@@ -187,7 +227,7 @@ export default function createcharacter({ }: Props) {
                             <div className={CreateChaStyle.line} ></div>
 
                             <div style={{paddingTop:'40px'}}></div>
-                            <input placeholder='Name' type='input' className={CreateChaStyle.inputBox} value={characterName} onChange={(e) => setCharacterName(e.target.value)}></input>
+                            <input placeholder='Name' type='text' className={CreateChaStyle.inputBox} value={characterName} onChange={(e) => setCharacterName(e.target.value)}></input>
                             
                             
                             <div style={{paddingTop:'30px'}}>
@@ -250,13 +290,22 @@ export default function createcharacter({ }: Props) {
                                
                                 <p style={{paddingTop:'5px'}}>
                                      
-                                    <textarea rows={5} cols={50}></textarea>
+                                    <textarea onChange={(e) => setCharacterBG(e.target.value)} rows={5} cols={50}></textarea>
                                 </p>
                             </div>
                             <div className={LoginStyle.submit} style={{marginTop:'2%'}} >
-                                <button type={'submit'} ><a href='#' >Create Character</a></button>
+                                <button type={'submit'} onClick={()=>{
+                                    HDcreateCharacter(
+                                        characterName, 
+                                        selectedRace, 
+                                        selectedClass, 
+                                        characterBG, 
+                                        randomNumbers
+                                        )}}
+                                        disabled={loading}>
+                                            {loading ? "Loading..." : "Create Character"}
+                                </button>
                             </div>
-                            
                         </div>
                     </div>
                 </div>

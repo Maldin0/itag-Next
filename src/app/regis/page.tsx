@@ -21,7 +21,7 @@ export default function Regis({}: Props) {
       const res = await axios.post("http://localhost:8080/users/register", {
         username,
         email,
-        password,
+        password
       });
       if (res.data.status === "Success") {
         alert(res.data.message);
