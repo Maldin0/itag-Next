@@ -64,7 +64,7 @@ export default function Home({}: Props) {
                   <div
                     style={{
                       display: "inline-block",
-                      transform: "translateY(-50%) translateX(35%)",
+                      transform: "translateY(20%) translateX(120%)",
                     }}
                   >
                     <button onClick={() => {
