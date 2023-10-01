@@ -164,7 +164,7 @@ export default function Profile({}: Props) {
         error.response.data &&
         error.response.data.message
       ) {
-        alert("จะอยากได้ซ้ำไปทำไม ทีคนเก่าไม่เห็นอยากได้แกเลย :(");
+        alert(error);
       } else {  
         alert("An unexpected error occurred.");
       }

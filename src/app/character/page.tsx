@@ -252,15 +252,15 @@ export default function createcharacter({ }: Props) {
                                 &nbsp;con: {randomNumbers[5]}
                             </p>
                             
-                            <div className={CreateChaStyle.font} style={{paddingTop:'50px'}}>
+                            <div className={CreateChaStyle.font} style={{paddingTop:'30px'}}>
                                 Backstory
                                
-                                <p style={{paddingTop:'10px'}}>
+                                <p style={{paddingTop:'5px'}}>
                                      
                                     <textarea rows={'5'} cols={'50'}></textarea>
                                 </p>
                             </div>
-                            <div className={LoginStyle.submit} style={{marginTop:'1 0%'}} >
+                            <div className={LoginStyle.submit} style={{marginTop:'2%'}} >
                                 <button type={'submit'} ><a href='#' >Create Character</a></button>
                             </div>
                             
