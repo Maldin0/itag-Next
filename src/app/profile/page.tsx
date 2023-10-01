@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import axios from "axios";
+import axios, { all } from "axios";
 import profileStyle from "./profileStyle.module.css";
 import line from "./images/line.png";
 import { log } from "util";
@@ -20,6 +20,11 @@ import {
   TableColumn,
   TableRow,
   TableCell,
+  DropdownMenu,
+  Dropdown,
+  DropdownTrigger,
+  DropdownSection,
+  DropdownItem,
 } from "@nextui-org/react";
 
 type Props = {};
@@ -116,7 +121,7 @@ export default function Profile({}: Props) {
   const [opendeleteCharacter, setOpendeleteCharacter] =
     useState<Number | null>(null);
 
-  const allitems = {
+    const allitems: { [key: string]: number } = {
     "Health Potion" : 1,
     "Antidote" : 2,
     "Axe" : 3,
@@ -129,6 +134,12 @@ export default function Profile({}: Props) {
     "Dagger" : 10,
   };
 
+  const [selectedItems, setSelectedItems] = React.useState<string>("");
+  
+  const handleItemSelect = (items: string) => {
+    setSelectedItems(items);
+
+};
   async function handleAdd(char_id: Number, item_id: Number) {
     try{
       const res = await axios.post("http://localhost:8080/users/characters/add_item",
@@ -638,18 +649,27 @@ export default function Profile({}: Props) {
                         
                       </ModalBody>
                       <ModalFooter>
-                        <div style={{paddingTop:'10px'}}>
-                          ITEM ID: &nbsp;
-                          <input type={'number'} value={item_id.toString()} onChange={(e) => setItem_id(Number(e.target.value))}></input>
-                        </div>
-                        <div style={{paddingLeft:'20px'}}>
-                          <Button
-                            className={profileStyle.Addme}
-                            style={{ whiteSpace: "nowrap" }}
-                            onClick={() => handleAdd(character._char_id, item_id)}
-                          >
-                            Add Item
-                          </Button>
+                        <Dropdown>
+                          <DropdownTrigger >
+                            <Button>
+                              {selectedItems ? selectedItems : 'Select Items'}
+                            </Button>
+                          </DropdownTrigger>
+                          <DropdownMenu style={{paddingTop:'15px'}} className={profileStyle.content}>
+                              {Object.keys(allitems).map((item, index) => (
+                                  <DropdownItem 
+                                      key={index} 
+                                      onClick={() => handleItemSelect(item)}
+                                  >
+                                      {item}
+                                  </DropdownItem>
+                              ))}
+                          </DropdownMenu>
+                        </Dropdown>
+                        <div style={{paddingLeft:'4vw'}}>
+                        <button className={profileStyle.Addme} onClick={()=>{
+                          handleAdd(char_id,allitems[selectedItems])
+                        }} >ADD</button>
                         </div>
                       </ModalFooter>
                     </>

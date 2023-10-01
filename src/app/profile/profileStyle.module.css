@@ -236,10 +236,10 @@
   align-items: center;
   font-family: "Libre Baskerville", serif;
   font-size: 16px;
-  width: 6em;
-  height: 3em;
+  width: 5em;
+  height: 2.5em;
   background-color: rgb(35, 190, 21);
-
+ 
   border-radius: 2em;
   display: inline;
 }
@@ -261,6 +261,16 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+}
+
+.content{
+  display: block;
+  border: 0.2rem solid black;
+  border-radius: 10px;
+  transform: translateY(-20px);
+  padding: 10px;
+  background-color:#bb9673;
+  margin-left: 5vw;
 }
 
 
