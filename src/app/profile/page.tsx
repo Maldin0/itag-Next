@@ -114,31 +114,33 @@ export default function Profile({}: Props) {
     useState<Number | null>(null);
 
   const allitems = {
-    "Health Potion": 1,
-    Antidote: 2,
-    Axe: 3,
-    Shield: 4,
-    Sword: 5,
-    Guitar: 6,
-    Bow: 7,
-    Staff: 8,
-    Grimoire: 9,
-    Dagger: 10,
+    "Health Potion" : 1,
+    "Antidote" : 2,
+    "Axe" : 3,
+    "Shield" : 4,
+    "Sword" : 5,
+    "Guitar" : 6,
+    "Bow" : 7,
+    "Staff" : 8,
+    "Grimoire" : 9,
+    "Dagger" : 10,
   };
 
-  async function handleRemove() {
+  async function handleRemove(char_id: Number, item_id: Number) {
     try {
-      setLoading(true);
       const res = await axios.post(
         "http://localhost:8080/users/characters/remove_item",
-        {char_id,item_id}
+        {
+          char_id: char_id,
+          item_id: item_id,
+        }
       );
       if (res.data.status === "Success") {
         alert(res.data.message);
-        router.refresh();
+        fetchUser();
       } else {
         alert(res.data.message);
-        router.refresh();
+        fetchUser();
       }
     } catch (error) {
       // TODO: Still Noti the massage bitches
@@ -157,16 +159,15 @@ export default function Profile({}: Props) {
       setLoading(false);
     }
   }
-
-  React.useEffect(() => {
-    async function fetchUser() {
-      try {
-        const res = await axios.get("http://localhost:8080/users/data");
-        setUser(res.data);
-      } catch (err) {
-        console.error(err);
-      }
+  async function fetchUser() {
+    try {
+      const res = await axios.get("http://localhost:8080/users/data");
+      setUser(res.data);
+    } catch (err) {
+      console.error(err);
     }
+  }
+  React.useEffect(() => {
     fetchUser();
   }, []);
 
@@ -560,17 +561,17 @@ export default function Profile({}: Props) {
                                     <div
                                       className={profileStyle.Clickme}
                                       onClick={() => {
-                                        setItem_id(
+                                        const currentCharId =
+                                          character._char_id;
+                                        const currentItemid =
                                           allitems[
                                             item.name as keyof typeof allitems
-                                          ]
+                                          ];
+
+                                        handleRemove(
+                                          currentCharId,
+                                          currentItemid
                                         );
-                                        setChar_id(character._char_id);
-                                        console.log(character._char_id);
-                                        console.log(allitems[
-                                          item.name as keyof typeof allitems
-                                        ]);
-                                        handleRemove();
                                       }}
                                     >
                                       <button>Delete</button>
