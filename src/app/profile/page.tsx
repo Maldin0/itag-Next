@@ -129,6 +129,40 @@ export default function Profile({}: Props) {
     "Dagger" : 10,
   };
 
+  async function handleAdd(char_id: Number, item_id: Number) {
+    try{
+      const res = await axios.post("http://localhost:8080/users/characters/add_item",
+        {
+          char_id: char_id,
+          item_id: item_id,
+        }
+      );
+      if (res.data.status === "Success") {
+        alert(res.data.message);
+        fetchUser();
+        router.refresh();
+      } else {
+        alert(res.data.message);
+        fetchUser();
+        router.refresh();
+      }
+    } catch (error) {
+      if (
+        axios.isAxiosError(error) &&
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        alert("จะอยากได้ซ้ำไปทำไม ทีคนเก่าไม่เห็นอยากได้แกเลย :(");
+      } else {
+        alert("An unexpected error occurred.");
+      }
+      router.refresh();
+    } finally {
+      setLoading(false);
+    }
+  }
+
   async function handleRemove(char_id: Number, item_id: Number) {
     try {
       const res = await axios.post(
@@ -311,15 +345,16 @@ export default function Profile({}: Props) {
                     <>
                       <ModalHeader>
                         {" "}
-                        <h1
-                          className={profileStyle.font}
+                        <div className={profileStyle.font}
                           style={{
                             fontSize: "2rem",
-                            paddingLeft: "40%",
-                          }}
-                        >
-                          <strong>DETAILS</strong>
-                        </h1>
+                            paddingLeft: "25vw",
+                            position:'absolute'
+                          }}>
+                          <h1>
+                            <strong>DETAILS</strong>
+                          </h1>
+                        </div>
                       </ModalHeader>
                       <ModalBody style={{paddingTop:'50px'}}>
                         <div className={profileStyle.modaldetails}>
@@ -338,7 +373,7 @@ export default function Profile({}: Props) {
                               textDecoration: "underline",
                             }}
                           >
-                            <strong>Status:</strong>
+                            <strong>Status: </strong>
                           </p>
 
                           {Object.entries(character.status).map(
@@ -351,6 +386,7 @@ export default function Profile({}: Props) {
                                 key={key}
                               >
                                 <strong>
+                                &nbsp;&nbsp;&nbsp;
                                   {key.charAt(0).toUpperCase() + key.slice(1)}:
                                 </strong>{" "}
                                 {value}
@@ -500,7 +536,7 @@ export default function Profile({}: Props) {
                           )}
                         </div>
                       </ModalBody>
-                      <ModalFooter></ModalFooter>
+                      
                     </>
                   )}
                 </ModalContent>
@@ -519,7 +555,7 @@ export default function Profile({}: Props) {
                 isOpen={openedModalInventory === character._char_id}
                 onOpenChange={() => setOpenedModalInventory(null)}
               >
-                <ModalContent>
+                <ModalContent className={profileStyle.flexinven}>
                   {(onClose) => (
                     <>
                       <ModalHeader>
@@ -529,7 +565,8 @@ export default function Profile({}: Props) {
                             className={profileStyle.font}
                             style={{
                               fontSize: "2rem",
-                              paddingLeft: "220%",
+                              paddingLeft: "25vw",
+                              position:'absolute'
                             }}
                           >
                             <strong>INVENTORY</strong>
@@ -594,27 +631,25 @@ export default function Profile({}: Props) {
                             
                           </TableBody>     
                         </Table>
+                        
                       </ModalBody>
                       <ModalFooter>
                         <div style={{paddingTop:'10px'}}>
-                          ITEM NAME: &nbsp;
-                          <input></input>
-                        </div>
-                        <div style={{paddingLeft:'2vw',paddingTop:'10px'}}>
-                          ITEM Details: &nbsp;
-                          <input></input>
+                          ITEM ID: &nbsp;
+                          <input type={'number'} value={item_id.toString()} onChange={(e) => setItem_id(Number(e.target.value))}></input>
                         </div>
                         <div style={{paddingLeft:'20px'}}>
                           <Button
                             className={profileStyle.Addme}
                             style={{ whiteSpace: "nowrap" }}
+                            onClick={() => handleAdd(character._char_id, item_id)}
                           >
                             Add Item
                           </Button>
                         </div>
                       </ModalFooter>
                     </>
-                  
+                    
                   )}
                   
                 </ModalContent>
@@ -641,9 +676,9 @@ export default function Profile({}: Props) {
                       <>
                         
                         <ModalBody>
-                          <div  className={profileStyle.font}  style={{fontSize: "2rem",paddingLeft:'25vw' }}> Are you sure ?</div>
+                          <div  className={profileStyle.font}  style={{fontSize: "2rem",paddingLeft:'25vw',position:'absolute'}}> Are you sure ?</div>
                         </ModalBody>
-                        <ModalFooter style={{paddingLeft:'24vw',paddingTop:'15vh'}}>
+                        <ModalFooter style={{paddingTop:'15vh',paddingLeft:'25vw'}}>
                           <Button className={profileStyle.Deleteme} onPress={onClose}>
                             DELETE
                           </Button>
@@ -672,6 +707,9 @@ export default function Profile({}: Props) {
             <button type={"submit"} style={{ marginTop: "5%" }}>
               create
             </button>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
           </div>
         </Link>
       </div>
