@@ -149,6 +149,8 @@ export default function createcharacter({ }: Props) {
         "Rogue":5
     }
     
+    const 
+
     const generateRandomNumbers = () => {
         let nums: number[] = [];
         let sum = 0;

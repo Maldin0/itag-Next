@@ -140,20 +140,25 @@ export default function Profile({}: Props) {
       if (res.data.status === "Success") {
         alert(res.data.message);
         fetchUser();
-        router.refresh();
       } else {
         alert(res.data.message);
         fetchUser();
-        router.refresh();
       }
     } catch (error) {
-      if (
+      if (axios.isAxiosError(error) &&
+        error.response &&
+        error.response.data &&
+        error.response.data.message &&
+        error.response.data.message === "Character already has the specified item.") 
+       {
+        alert("จะอยากได้ซ้ำไปทำไม ทีคนเก่าไม่เห็นอยากได้แกเลย :(");
+      } else if (
         axios.isAxiosError(error) &&
         error.response &&
         error.response.data &&
-        error.response.data.message
-      ) {
-        alert("จะอยากได้ซ้ำไปทำไม ทีคนเก่าไม่เห็นอยากได้แกเลย :(");
+        error.response.data.message)
+        {
+        alert(error.response.data.message);
       } else {  
         alert("An unexpected error occurred.");
       }
@@ -180,7 +185,6 @@ export default function Profile({}: Props) {
         fetchUser();
       }
     } catch (error) {
-      // TODO: Still Noti the massage bitches
       if (
         axios.isAxiosError(error) &&
         error.response &&
