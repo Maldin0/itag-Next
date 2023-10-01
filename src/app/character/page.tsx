@@ -133,6 +133,22 @@ export default function createcharacter({ }: Props) {
         [selectedKey]
     );
 
+    const allRace = {
+        "Human":1,
+        "Elf":2,
+        "Dwarf":3,
+        "Orc":4,
+        "Gnome":5
+    }
+
+    const allClass = {
+        "Barbarian":1,
+        "Paladin":2,
+        "Bard":3,
+        "Mage":4,
+        "Rogue":5
+    }
+    
     const generateRandomNumbers = () => {
         let nums: number[] = [];
         let sum = 0;

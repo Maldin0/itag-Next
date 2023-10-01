@@ -17,16 +17,15 @@ interface User {
 export default function Home({}: Props) {
   const [user, setUser] = React.useState<User | null>(null);
   const router = useRouter();
-
-  React.useEffect(() => {
-    async function fetchUser() {
-      try {
-        const res = await axios.get("http://localhost:8080/users");
-        setUser(res.data);
-      } catch (err) {
-        console.error(err);
-      }
+  async function fetchUser() {
+    try {
+      const res = await axios.get("http://localhost:8080/users");
+      setUser(res.data);
+    } catch (err) {
+      console.error(err);
     }
+  }
+  React.useEffect(() => {
     fetchUser();
   }, []);
 
@@ -36,7 +35,7 @@ export default function Home({}: Props) {
     if(res.data) {
       // TODO: Notification then go redirect to home page
       alert(res.data.message)
-      router.refresh();
+      router.refresh()
   }
 }
 
