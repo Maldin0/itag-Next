@@ -97,8 +97,13 @@ interface Skill {
 
 export default function createcharacter({ }: Props) {
     const [characterName, setCharacterName] = useState("");
-    const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Races"]));
-    const [selectedKey, setSelectedKey] = React.useState(new Set(["Class"]));
+    const [selectedRace, setSelectedRace] = useState("");
+    const [selectedClass, setSelectedClass] = useState("");
+  
+  
+
+
+
 
     const handleCreate = async () => {
         try {
@@ -124,14 +129,6 @@ export default function createcharacter({ }: Props) {
     
     const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
 
-    const selectedRace = React.useMemo(
-        () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-        [selectedKeys]
-    );
-    const selectedClass = React.useMemo(
-        () => Array.from(selectedKey).join(", ").replaceAll("_", " "),
-        [selectedKey]
-    );
 
     const allRace = {
         "Human":1,
@@ -148,7 +145,6 @@ export default function createcharacter({ }: Props) {
         "Mage":4,
         "Rogue":5
     }
-
     const generateRandomNumbers = () => {
         let nums: number[] = [];
         let sum = 0;
@@ -197,24 +193,16 @@ export default function createcharacter({ }: Props) {
                             <div style={{paddingTop:'30px'}}>
                                 <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'25%'}}>
                                     <DropdownTrigger className={CreateChaStyle.selectbtn}>
-                                        <Button 
-                                        variant="bordered" 
-                                        >
-                                            {selectedRace}
+                                        <Button style={{whiteSpace:'nowrap'}}>
+                                             {selectedRace || "Choose a Race"}
                                         </Button>
                                     </DropdownTrigger>
-                                    <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
-                                        variant="flat"
-                                        disallowEmptySelection={true}
-                                        selectionMode="single"
-                                        selectedKeys={selectedKeys}
-                                        onSelectionChange={setSelectedKeys}
-                                    >
-                                        <DropdownItem className={CreateChaStyle.options} key="Human">Human</DropdownItem>
-                                        <DropdownItem className={CreateChaStyle.options} key="Elf">Elf</DropdownItem>
-                                        <DropdownItem className={CreateChaStyle.options}  key="Dwarf">Dwarf</DropdownItem>
-                                        <DropdownItem className={CreateChaStyle.options} key="Orc">Orc</DropdownItem>
-                                        <DropdownItem className={CreateChaStyle.options} key="Gnome">Gnome</DropdownItem>
+                                    <DropdownMenu className={CreateChaStyle.content}>
+                                        <DropdownItem className={CreateChaStyle.options} key="Human" onClick={() => setSelectedRace("Human")} >Human</DropdownItem>
+                                        <DropdownItem className={CreateChaStyle.options} key="Elf" onClick={() => setSelectedRace("Elf")}>Elf</DropdownItem>
+                                        <DropdownItem className={CreateChaStyle.options}  key="Dwarf" onClick={() => setSelectedRace("Dwarf")}>Dwarf</DropdownItem>
+                                        <DropdownItem className={CreateChaStyle.options} key="Orc" onClick={() => setSelectedRace("Orc")}>Orc</DropdownItem>
+                                        <DropdownItem className={CreateChaStyle.options} key="Gnome" onClick={() => setSelectedRace("Gnome")}>Gnome</DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
@@ -222,21 +210,16 @@ export default function createcharacter({ }: Props) {
                             <div style={{paddingTop:'30px'}}>
                                 <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'25%'}}>
                                     <DropdownTrigger className={CreateChaStyle.selectbtn}>
-                                        <Button variant="bordered">
-                                            {selectedClass}
+                                        <Button style={{whiteSpace:'nowrap'}}>
+                                            {selectedClass || "Choose a class"}
                                         </Button>
                                     </DropdownTrigger>
-                                    <DropdownMenu className={CreateChaStyle.content} 
-                                                variant="flat" disallowEmptySelection={true}
-                                                selectionMode="single"
-                                                selectedKeys={selectedKey}
-                                                onSelectionChange={setSelectedKey}
-                                    >
-                                            <DropdownItem className={CreateChaStyle.options} key="Barbarian">Barbarian</DropdownItem>
-                                            <DropdownItem className={CreateChaStyle.options} key="Paladin">Paladin</DropdownItem>
-                                            <DropdownItem className={CreateChaStyle.options} key="Bard">Bard</DropdownItem>
-                                            <DropdownItem className={CreateChaStyle.options} key="Mage">Mage</DropdownItem>
-                                            <DropdownItem className={CreateChaStyle.options} key="Rogue">Rogue</DropdownItem>
+                                    <DropdownMenu className={CreateChaStyle.content}>
+                                            <DropdownItem className={CreateChaStyle.options} key="Barbarian" onClick={() => setSelectedClass("Barbarian")}>Barbarian</DropdownItem>
+                                            <DropdownItem className={CreateChaStyle.options} key="Paladin" onClick={() => setSelectedClass("Paladin")}>Paladin</DropdownItem>
+                                            <DropdownItem className={CreateChaStyle.options} key="Bard" onClick={() => setSelectedClass("Bard")}>Bard</DropdownItem>
+                                            <DropdownItem className={CreateChaStyle.options} key="Mage" onClick={() => setSelectedClass("Mage")}>Mage</DropdownItem>
+                                            <DropdownItem className={CreateChaStyle.options} key="Rogue" onClick={() => setSelectedClass("Rogue")}>Rogue</DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
@@ -252,15 +235,15 @@ export default function createcharacter({ }: Props) {
                                 &nbsp;con: {randomNumbers[5]}
                             </p>
                             
-                            <div className={CreateChaStyle.font} style={{paddingTop:'50px'}}>
+                            <div className={CreateChaStyle.font} style={{paddingTop:'30px'}}>
                                 Backstory
                                
-                                <p style={{paddingTop:'10px'}}>
+                                <p style={{paddingTop:'5px'}}>
                                      
                                     <textarea rows={5} cols={50}></textarea>
                                 </p>
                             </div>
-                            <div className={LoginStyle.submit} style={{marginTop:'1 0%'}} >
+                            <div className={LoginStyle.submit} style={{marginTop:'2%'}} >
                                 <button type={'submit'} ><a href='#' >Create Character</a></button>
                             </div>
                             
