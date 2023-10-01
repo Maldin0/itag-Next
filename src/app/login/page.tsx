@@ -17,7 +17,7 @@ export default function Login({}: Props) {
   async function handleLogin() {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:8080/users/login", {
+      const res = await axios.post("https://itag_server.iservkmitl.tech/users/login", {
         usernameOrEmail,
         password,
       });

@@ -142,7 +142,7 @@ export default function Profile({}: Props) {
 };
   async function handleAdd(char_id: Number, item_id: Number) {
     try{
-      const res = await axios.post("http://localhost:8080/users/characters/add_item",
+      const res = await axios.post("https://itag_server.iservkmitl.tech/users/characters/add_item",
         {
           char_id: char_id,
           item_id: item_id,
@@ -181,7 +181,7 @@ export default function Profile({}: Props) {
   async function handleDelete(char_id: Number) {
     try {
       const res = await axios.post(
-        "http://localhost:8080/users/characters/delete",
+        "https://itag_server.iservkmitl.tech/users/characters/delete",
         {
           char_id: char_id,
         }
@@ -210,7 +210,7 @@ export default function Profile({}: Props) {
   async function handleRemove(char_id: Number, item_id: Number) {
     try {
       const res = await axios.post(
-        "http://localhost:8080/users/characters/remove_item",
+        "https://itag_server.iservkmitl.tech/users/characters/remove_item",
         {
           char_id: char_id,
           item_id: item_id,
@@ -241,7 +241,7 @@ export default function Profile({}: Props) {
   }
   async function fetchUser() {
     try {
-      const res = await axios.get("http://localhost:8080/users/data");
+      const res = await axios.get("https://itag_server.iservkmitl.tech/users/data");
       setUser(res.data);
     } catch (err) {
       console.error(err);

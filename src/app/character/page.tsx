@@ -150,7 +150,7 @@ export default function Createcharacter({ }: Props) {
     async function HDcreateCharacter(characterName: string, selectedRace: string, selectedClass: string, characterBG: string, status: number[]) {
         try {
             setLoading(true);
-            const res = await axios.post("http://localhost:8080/users/characters/create", 
+            const res = await axios.post("https://itag_server.iservkmitl.tech/users/characters/create", 
                 {
                     race_id: allRace[selectedRace],
                     class_id: allClass[selectedClass],
@@ -172,7 +172,7 @@ export default function Createcharacter({ }: Props) {
                 router.push("/profile");
             } else {
                 alert(res.data.message);
-                window.location.reload();
+                router.refresh();
             }
         } catch (error) {
             if (
@@ -185,7 +185,7 @@ export default function Createcharacter({ }: Props) {
             } else {
                 alert("An unexpected error occurred.");
             }
-            window.location.reload();
+            router.refresh();
         } finally {
             setLoading(false);
         }

@@ -19,7 +19,7 @@ export default function Home({}: Props) {
   const router = useRouter();
   async function fetchUser() {
     try {
-      const res = await axios.get("http://localhost:8080/users");
+      const res = await axios.get("https://itag_server.iservkmitl.tech/users");
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -30,7 +30,7 @@ export default function Home({}: Props) {
   }, []);
 
   async function handleLogout() {
-    const res = await axios.get("http://localhost:8080/users/logout")
+    const res = await axios.get("https://itag_server.iservkmitl.tech/users/logout")
 
     if(res.data) {
       

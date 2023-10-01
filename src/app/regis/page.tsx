@@ -18,7 +18,7 @@ export default function Regis({}: Props) {
   async function handleRegis() {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:8080/users/register", {
+      const res = await axios.post("https://itag_server.iservkmitl.tech/users/register", {
         username,
         email,
         password
