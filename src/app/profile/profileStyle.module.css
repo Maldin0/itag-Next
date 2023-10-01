@@ -193,5 +193,68 @@
  
 }
 
+.Deleteme{
+  justify-items: center;
+  align-items: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  width: 7em;
+  height: 3em;
+  background-color: rgb(214, 58, 58);
+  
+  border-radius: 6em;
+  display: inline;
+}
+
+.Deleteme button{
+  justify-items: center;
+  align-items: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  width: 7em;
+  height: 3em;
+  background-color: rgb(214, 58, 58);
+  border-radius: 6em;
+  display: inline;
+}
+
+.donotdeleteme{
+  justify-items: center;
+  align-items: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  width: 7em;
+  height: 3em;
+  background-color: rgb(145, 140, 140);
+  
+  border-radius: 6em;
+  display: inline;
+}
+
+.Addme{
+  justify-items: center;
+  align-items: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: 16px;
+  width: 6em;
+  height: 3em;
+  background-color: rgb(35, 190, 21);
+
+  border-radius: 2em;
+  display: inline;
+}
+
+.Openme{
+  justify-items: center;
+  align-items: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: 16px;
+  width: 6em;
+  height: 3em;
+  background-color: rgb(133, 74, 7);
+  color: white;
+  border-radius: 2em;
+  display: inline;
+}
 
 

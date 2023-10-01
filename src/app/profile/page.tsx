@@ -113,6 +113,9 @@ export default function Profile({}: Props) {
   const [openedModalInventory, setOpenedModalInventory] =
     useState<Number | null>(null);
 
+  const [opendeleteCharacter, setOpendeleteCharacter] =
+    useState<Number | null>(null);
+
   const allitems = {
     "Health Potion" : 1,
     "Antidote" : 2,
@@ -267,7 +270,7 @@ export default function Profile({}: Props) {
         <div
           className={profileStyle.char}
           style={{
-            paddingLeft: "80px",
+            paddingLeft: "95px",
             fontSize: "1.3rem",
             display: "inline-block",
           }}
@@ -312,7 +315,7 @@ export default function Profile({}: Props) {
                           className={profileStyle.font}
                           style={{
                             fontSize: "2rem",
-                            paddingLeft: "330%",
+                            paddingLeft: "40%",
                           }}
                         >
                           <strong>DETAILS</strong>
@@ -505,11 +508,11 @@ export default function Profile({}: Props) {
             </div>
             <div>
               <Button
-                className={profileStyle.Clickme}
+                className={profileStyle.Openme}
                 style={{ whiteSpace: "nowrap" }}
                 onPress={() => setOpenedModalInventory(character._char_id)}
               >
-                Click here
+                Open 
               </Button>
               <Modal
                 className={profileStyle.yourModalClass}
@@ -520,7 +523,7 @@ export default function Profile({}: Props) {
                   {(onClose) => (
                     <>
                       <ModalHeader>
-                        {" "}
+                        
                         <div>
                           <h1
                             className={profileStyle.font}
@@ -543,48 +546,73 @@ export default function Profile({}: Props) {
                             
                           </TableHeader>
                           <TableBody>
+                            
                             {user?.user._char[_char_id]?.bag.map(
                               (item, index) => (
                                 <TableRow
                                   key={index}
                                   className={profileStyle.modaltable}
                                 >
-                                  <TableCell>
+                                  <TableCell >
+                                  <div>&nbsp;</div>
                                     {item.name}
                                   </TableCell>
                                   <TableCell
+                                  
                                     style={{ paddingLeft:"6vw" }}
                                   >
+                                    <div>&nbsp;</div>
                                     {item.detail}
                                   </TableCell>
-                                  <TableCell style={{ paddingTop: "5px",paddingLeft:"5vw" }}>
-                                    <div
-                                      className={profileStyle.Clickme}
-                                      onClick={() => {
-                                        const currentCharId =
-                                          character._char_id;
-                                        const currentItemid =
-                                          allitems[
-                                            item.name as keyof typeof allitems
-                                          ];
+                                  
+                                  <TableCell style={{ paddingTop: "7px",paddingLeft:"10vw" }}>
+                                    <div>&nbsp;</div>
+                                      <div
+                                        className={profileStyle.Deleteme}
+                                        
+                                        onClick={() => {
+                                          const currentCharId =
+                                            character._char_id;
+                                          const currentItemid =
+                                            allitems[
+                                              item.name as keyof typeof allitems
+                                            ];
 
-                                        handleRemove(
-                                          currentCharId,
-                                          currentItemid
-                                        );
-                                      }}
-                                    >
-                                      <button>Delete</button>
-                                    </div>
-                                    
+                                          handleRemove(
+                                            currentCharId,
+                                            currentItemid
+                                          );
+                                        }}
+                                      >
+                                        <button>Delete</button>
+                                      </div>                                  
                                   </TableCell>
                                 </TableRow>
+                                
                               )
                             )}
+                            
                           </TableBody>     
                         </Table>
                       </ModalBody>
-                     
+                      <ModalFooter>
+                        <div style={{paddingTop:'10px'}}>
+                          ITEM NAME: &nbsp;
+                          <input></input>
+                        </div>
+                        <div style={{paddingLeft:'2vw',paddingTop:'10px'}}>
+                          ITEM Details: &nbsp;
+                          <input></input>
+                        </div>
+                        <div style={{paddingLeft:'20px'}}>
+                          <Button
+                            className={profileStyle.Addme}
+                            style={{ whiteSpace: "nowrap" }}
+                          >
+                            Add Item
+                          </Button>
+                        </div>
+                      </ModalFooter>
                     </>
                   
                   )}
@@ -593,6 +621,44 @@ export default function Profile({}: Props) {
                 
               </Modal>
               
+            </div>
+            <div>
+              <>
+                <Button
+                  className={profileStyle.Deleteme}
+                  style={{ whiteSpace: "nowrap" }}
+                  onPress={() => setOpendeleteCharacter(character._char_id)}
+                >
+                    Delete
+                </Button>
+                <Modal
+                className={profileStyle.yourModalClass}
+                isOpen={opendeleteCharacter === character._char_id}
+                onOpenChange={() => setOpendeleteCharacter(null)}
+              >
+                  <ModalContent>
+                    {(onClose) => (
+                      <>
+                        
+                        <ModalBody>
+                          <div  className={profileStyle.font}  style={{fontSize: "2rem",paddingLeft:'25vw' }}> Are you sure ?</div>
+                        </ModalBody>
+                        <ModalFooter style={{paddingLeft:'24vw',paddingTop:'15vh'}}>
+                          <Button className={profileStyle.Deleteme} onPress={onClose}>
+                            DELETE
+                          </Button>
+                          <div style={{paddingLeft:'2vw'}}>
+                          <Button  className={profileStyle.donotdeleteme} onPress={onClose}>
+                            NO
+                          </Button>
+                          </div>
+                         
+                        </ModalFooter>
+                      </>
+                    )}
+                  </ModalContent>
+                </Modal>
+              </>
             </div>
           </div>
         ))}
