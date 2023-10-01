@@ -295,6 +295,7 @@ export default function Createcharacter({ }: Props) {
                             </div>
                             <div className={LoginStyle.submit} style={{marginTop:'2%'}} >
                                 <button type={'submit'} onClick={()=>{
+                                    setRandomNumbers(randomNumbers)
                                     HDcreateCharacter(
                                         characterName, 
                                         selectedRace, 
