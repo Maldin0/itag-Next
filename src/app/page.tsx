@@ -85,7 +85,7 @@ export default function Home({}: Props) {
                   <div
                     style={{
                       display: "inline-block",
-                      transform: "translateY(-35%) translateX(100%)",
+                      transform: "translateY(5%) translateX(100%)",
                     }}
                   >
                       <button onClick={() => {
@@ -105,7 +105,7 @@ export default function Home({}: Props) {
                   <div 
                     style={{
                       display: "inline-block",
-                      transform: "translateY(10%) translateX(50%)"
+                      transform: "translateY(-20%) translateX(50%)"
                     }}
                   >
                     <Link href='' onClick={handleLogout}>Logout</Link>
@@ -309,6 +309,7 @@ export default function Home({}: Props) {
           </div>
         </div>
       </div>
+      <p>&nbsp;</p>
       <div className={Homestyle.villageImageTwo}>
         <div
           className={Homestyle.myfont}
