@@ -108,8 +108,8 @@ export default function createcharacter({ }: Props) {
     const handleCreate = async () => {
         try {
             const payload = {
-                race: selectedRaces,
-                class: selectedClasses,
+                race: selectedRace,
+                class: selectedClass,
                 name: characterName,
             };
     
