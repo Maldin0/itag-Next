@@ -113,6 +113,9 @@ export default function Profile({}: Props) {
   const [openedModalInventory, setOpenedModalInventory] =
     useState<Number | null>(null);
 
+  const [opendeleteCharacter, setOpendeleteCharacter] =
+    useState<Number | null>(null);
+
   const allitems = {
     "Health Potion" : 1,
     "Antidote" : 2,
@@ -125,6 +128,40 @@ export default function Profile({}: Props) {
     "Grimoire" : 9,
     "Dagger" : 10,
   };
+
+  async function handleAdd(char_id: Number, item_id: Number) {
+    try{
+      const res = await axios.post("http://localhost:8080/users/characters/add_item",
+        {
+          char_id: char_id,
+          item_id: item_id,
+        }
+      );
+      if (res.data.status === "Success") {
+        alert(res.data.message);
+        fetchUser();
+        router.refresh();
+      } else {
+        alert(res.data.message);
+        fetchUser();
+        router.refresh();
+      }
+    } catch (error) {
+      if (
+        axios.isAxiosError(error) &&
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        alert("จะอยากได้ซ้ำไปทำไม ทีคนเก่าไม่เห็นอยากได้แกเลย :(");
+      } else {
+        alert("An unexpected error occurred.");
+      }
+      router.refresh();
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function handleRemove(char_id: Number, item_id: Number) {
     try {
@@ -267,7 +304,7 @@ export default function Profile({}: Props) {
         <div
           className={profileStyle.char}
           style={{
-            paddingLeft: "80px",
+            paddingLeft: "95px",
             fontSize: "1.3rem",
             display: "inline-block",
           }}
@@ -308,15 +345,16 @@ export default function Profile({}: Props) {
                     <>
                       <ModalHeader>
                         {" "}
-                        <h1
-                          className={profileStyle.font}
+                        <div className={profileStyle.font}
                           style={{
                             fontSize: "2rem",
-                            paddingLeft: "330%",
-                          }}
-                        >
-                          <strong>DETAILS</strong>
-                        </h1>
+                            paddingLeft: "25vw",
+                            position:'absolute'
+                          }}>
+                          <h1>
+                            <strong>DETAILS</strong>
+                          </h1>
+                        </div>
                       </ModalHeader>
                       <ModalBody style={{paddingTop:'50px'}}>
                         <div className={profileStyle.modaldetails}>
@@ -335,7 +373,7 @@ export default function Profile({}: Props) {
                               textDecoration: "underline",
                             }}
                           >
-                            <strong>Status:</strong>
+                            <strong>Status: </strong>
                           </p>
 
                           {Object.entries(character.status).map(
@@ -348,6 +386,7 @@ export default function Profile({}: Props) {
                                 key={key}
                               >
                                 <strong>
+                                &nbsp;&nbsp;&nbsp;
                                   {key.charAt(0).toUpperCase() + key.slice(1)}:
                                 </strong>{" "}
                                 {value}
@@ -497,7 +536,7 @@ export default function Profile({}: Props) {
                           )}
                         </div>
                       </ModalBody>
-                      <ModalFooter></ModalFooter>
+                      
                     </>
                   )}
                 </ModalContent>
@@ -505,28 +544,29 @@ export default function Profile({}: Props) {
             </div>
             <div>
               <Button
-                className={profileStyle.Clickme}
+                className={profileStyle.Openme}
                 style={{ whiteSpace: "nowrap" }}
                 onPress={() => setOpenedModalInventory(character._char_id)}
               >
-                Click here
+                Open 
               </Button>
               <Modal
                 className={profileStyle.yourModalClass}
                 isOpen={openedModalInventory === character._char_id}
                 onOpenChange={() => setOpenedModalInventory(null)}
               >
-                <ModalContent>
+                <ModalContent className={profileStyle.flexinven}>
                   {(onClose) => (
                     <>
                       <ModalHeader>
-                        {" "}
+                        
                         <div>
                           <h1
                             className={profileStyle.font}
                             style={{
                               fontSize: "2rem",
-                              paddingLeft: "220%",
+                              paddingLeft: "25vw",
+                              position:'absolute'
                             }}
                           >
                             <strong>INVENTORY</strong>
@@ -535,61 +575,125 @@ export default function Profile({}: Props) {
                       </ModalHeader>
                       <ModalBody>
                         <p>&nbsp;</p>
-                        <Table >
+                        <Table className={profileStyle.centerTable}>
                           <TableHeader>
-                            <TableColumn style={{paddingTop:'70px',}}>ITEM</TableColumn>
-                            <TableColumn style={{paddingTop:'70px',paddingLeft:'15vw',position:'absolute'}}>DETAIL</TableColumn>
-                            <TableColumn style={{paddingTop:'70px',paddingLeft:'40vw',position:'absolute'}}>ACTION</TableColumn>
+                            <TableColumn >&nbsp;</TableColumn>
+                            <TableColumn >&nbsp;</TableColumn>
+                            <TableColumn >&nbsp;</TableColumn>
+                            
                           </TableHeader>
                           <TableBody>
+                            
                             {user?.user._char[_char_id]?.bag.map(
                               (item, index) => (
                                 <TableRow
                                   key={index}
                                   className={profileStyle.modaltable}
                                 >
-                                  <TableCell style={{ paddingTop: "30px" }}>
+                                  <TableCell >
+                                  <div>&nbsp;</div>
                                     {item.name}
                                   </TableCell>
                                   <TableCell
-                                    style={{
-                                      paddingTop: "30px",
-                                      paddingLeft: "8vw",
-                                    }}
+                                  
+                                    style={{ paddingLeft:"6vw" }}
                                   >
+                                    <div>&nbsp;</div>
                                     {item.detail}
                                   </TableCell>
-                                  <TableCell style={{ paddingTop: "30px",paddingLeft:"10vw" }}>
-                                    <div
-                                      className={profileStyle.Clickme}
-                                      onClick={() => {
-                                        const currentCharId =
-                                          character._char_id;
-                                        const currentItemid =
-                                          allitems[
-                                            item.name as keyof typeof allitems
-                                          ];
+                                  
+                                  <TableCell style={{ paddingTop: "7px",paddingLeft:"10vw" }}>
+                                    <div>&nbsp;</div>
+                                      <div
+                                        className={profileStyle.Deleteme}
+                                        
+                                        onClick={() => {
+                                          const currentCharId =
+                                            character._char_id;
+                                          const currentItemid =
+                                            allitems[
+                                              item.name as keyof typeof allitems
+                                            ];
 
-                                        handleRemove(
-                                          currentCharId,
-                                          currentItemid
-                                        );
-                                      }}
-                                    >
-                                      <button>Delete</button>
-                                    </div>
+                                          handleRemove(
+                                            currentCharId,
+                                            currentItemid
+                                          );
+                                        }}
+                                      >
+                                        <button>Delete</button>
+                                      </div>                                  
                                   </TableCell>
                                 </TableRow>
+                                
                               )
                             )}
-                          </TableBody>
+                            
+                          </TableBody>     
                         </Table>
+                        
                       </ModalBody>
-                      <ModalFooter></ModalFooter>
+                      <ModalFooter>
+                        <div style={{paddingTop:'10px'}}>
+                          ITEM ID: &nbsp;
+                          <input type={'number'} value={item_id.toString()} onChange={(e) => setItem_id(Number(e.target.value))}></input>
+                        </div>
+                        <div style={{paddingLeft:'20px'}}>
+                          <Button
+                            className={profileStyle.Addme}
+                            style={{ whiteSpace: "nowrap" }}
+                            onClick={() => handleAdd(character._char_id, item_id)}
+                          >
+                            Add Item
+                          </Button>
+                        </div>
+                      </ModalFooter>
                     </>
+                    
                   )}
+                  
                 </ModalContent>
+                
               </Modal>
+              
+            </div>
+            <div>
+              <>
+                <Button
+                  className={profileStyle.Deleteme}
+                  style={{ whiteSpace: "nowrap" }}
+                  onPress={() => setOpendeleteCharacter(character._char_id)}
+                >
+                    Delete
+                </Button>
+                <Modal
+                className={profileStyle.yourModalClass}
+                isOpen={opendeleteCharacter === character._char_id}
+                onOpenChange={() => setOpendeleteCharacter(null)}
+              >
+                  <ModalContent>
+                    {(onClose) => (
+                      <>
+                        
+                        <ModalBody>
+                          <div  className={profileStyle.font}  style={{fontSize: "2rem",paddingLeft:'25vw',position:'absolute'}}> Are you sure ?</div>
+                        </ModalBody>
+                        <ModalFooter style={{paddingTop:'15vh',paddingLeft:'25vw'}}>
+                          <Button className={profileStyle.Deleteme} onPress={onClose}>
+                            DELETE
+                          </Button>
+                          <div style={{paddingLeft:'2vw'}}>
+                          <Button  className={profileStyle.donotdeleteme} onPress={onClose}>
+                            NO
+                          </Button>
+                          </div>
+                         
+                        </ModalFooter>
+                      </>
+                    )}
+                  </ModalContent>
+                </Modal>
+              </>
             </div>
           </div>
         ))}
@@ -603,6 +707,9 @@ export default function Profile({}: Props) {
             <button type={"submit"} style={{ marginTop: "5%" }}>
               create
             </button>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
           </div>
         </Link>
       </div>

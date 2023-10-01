@@ -21,6 +21,8 @@ type Props = {}
 export default function createcharacter({ }: Props) {
     const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Races"]));
     const [selectedKey, setSelectedKey] = React.useState(new Set(["Class"]));
+    const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
+    const total = randomNumbers.reduce((a, b) => a + b, 0);
 
     const selectedValue = React.useMemo(
         () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
@@ -47,6 +49,13 @@ export default function createcharacter({ }: Props) {
         "Rogue":5
     }
     
+    const generateRandomNumber = () => {
+        let potentialRandom = Math.floor(Math.random() * (12 - randomNumbers.reduce((a, b) => a + b, 0) + 1));
+        
+        if (randomNumbers.reduce((a, b) => a + b, 0) + potentialRandom <= 12) {
+            setRandomNumbers(prevNumbers => [...prevNumbers, potentialRandom]);
+        }
+    }
     return (
         
         <div style={{position:'fixed',width:'100%',height:'100%', backgroundSize: 'cover',backgroundRepeat: 'repeat',backgroundPosition: 'center'}}>
@@ -102,7 +111,7 @@ export default function createcharacter({ }: Props) {
                                         {selectedValues}
                                     </Button>
                                 </DropdownTrigger>
-                                <DropdownMenu className={CreateChaStyle.content} aria-label="Static Actions"
+                                <DropdownMenu className={CreateChaStyle.content} 
                                             variant="flat" disallowEmptySelection={true}
                                             selectionMode="single"
                                             selectedKeys={selectedKey}
@@ -117,8 +126,12 @@ export default function createcharacter({ }: Props) {
                             </Dropdown>
                         </div>
 
+                        <div style={{paddingTop:'20px'}}></div>
+                        <button  onClick={generateRandomNumber} disabled={total >= 12} className={CreateChaStyle.inputBox} style={{}}><p>Random Stats: {randomNumbers.join(", ")}</p></button>
+
                         <div className={LoginStyle.submit} style={{marginTop:'10%'}} >
                             <button type={'submit'} ><a href='#' >Create Character</a></button>
+                            
                         </div>
                     </div>
                 </div>
