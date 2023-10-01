@@ -311,15 +311,14 @@ export default function Profile({}: Props) {
                         <h1
                           className={profileStyle.font}
                           style={{
-                            paddingTop: "20px",
                             fontSize: "2rem",
-                            paddingLeft: "45%",
+                            paddingLeft: "330%",
                           }}
                         >
                           <strong>DETAILS</strong>
                         </h1>
                       </ModalHeader>
-                      <ModalBody>
+                      <ModalBody style={{paddingTop:'50px'}}>
                         <div className={profileStyle.modaldetails}>
                           <p>
                             <strong>Character name:</strong> {character.name}
@@ -386,7 +385,7 @@ export default function Profile({}: Props) {
                                   paddingTop: "15px",
                                 }}
                               >
-                                <strong>{skill.name}:</strong>
+                                <strong>&nbsp;&nbsp;&nbsp;{skill.name}:</strong>
                                 {skill.details && <span> {skill.details}</span>}
                               </div>
                             ))
@@ -416,14 +415,14 @@ export default function Profile({}: Props) {
                                 }}
                               >
                                 <h3>
-                                  <strong>{feature.name}</strong>
+                                &nbsp;&nbsp;&nbsp;<strong>{feature.name}</strong>
                                 </h3>
-                                <p>&nbsp;&nbsp;&nbsp;&nbsp;{feature.detail}</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{feature.detail}</p>
                               </div>
                             ))
                           ) : (
                             <p style={{ paddingLeft: "15px" }}>
-                              No features available for this class.
+                              &nbsp;&nbsp;&nbsp;No features available for this class.
                             </p>
                           )}
 
@@ -446,19 +445,19 @@ export default function Profile({}: Props) {
                                 }}
                               >
                                 <h3>
-                                  <strong>{spell.name}</strong>
+                                &nbsp;&nbsp;&nbsp;<strong>{spell.name}</strong>
                                 </h3>
-                                <p style={{ paddingLeft: "10px" }}>
+                                <p style={{ paddingLeft: "40px" }}>
                                   <strong>Interval Time:</strong>{" "}
                                   {spell.interval_time}
                                 </p>
-                                <p style={{ paddingLeft: "10px" }}>
+                                <p style={{ paddingLeft: "40px" }}>
                                   <strong>Duration:</strong> {spell.duration}
                                 </p>
-                                <p style={{ paddingLeft: "10px" }}>
+                                <p style={{ paddingLeft: "40px" }}>
                                   <strong>Range:</strong> {spell.range}
                                 </p>
-                                <p style={{ paddingLeft: "10px" }}>
+                                <p style={{ paddingLeft: "40px" }}>
                                   <strong>Detail:</strong> {spell.details}
                                 </p>
                               </div>
@@ -522,24 +521,25 @@ export default function Profile({}: Props) {
                     <>
                       <ModalHeader>
                         {" "}
-                        <h1
-                          className={profileStyle.font}
-                          style={{
-                            paddingTop: "20px",
-                            fontSize: "2rem",
-                            paddingLeft: "45%",
-                          }}
-                        >
-                          <strong>INVENTORY</strong>
-                        </h1>
+                        <div>
+                          <h1
+                            className={profileStyle.font}
+                            style={{
+                              fontSize: "2rem",
+                              paddingLeft: "220%",
+                            }}
+                          >
+                            <strong>INVENTORY</strong>
+                          </h1>
+                        </div>
                       </ModalHeader>
                       <ModalBody>
                         <p>&nbsp;</p>
-                        <Table>
+                        <Table >
                           <TableHeader>
-                            <TableColumn>ITEM</TableColumn>
-                            <TableColumn>DETAIL</TableColumn>
-                            <TableColumn>STATUS</TableColumn>
+                            <TableColumn style={{paddingTop:'70px',}}>ITEM</TableColumn>
+                            <TableColumn style={{paddingTop:'70px',paddingLeft:'15vw',position:'absolute'}}>DETAIL</TableColumn>
+                            <TableColumn style={{paddingTop:'70px',paddingLeft:'40vw',position:'absolute'}}>ACTION</TableColumn>
                           </TableHeader>
                           <TableBody>
                             {user?.user._char[_char_id]?.bag.map(
@@ -554,12 +554,12 @@ export default function Profile({}: Props) {
                                   <TableCell
                                     style={{
                                       paddingTop: "30px",
-                                      paddingLeft: "250px",
+                                      paddingLeft: "8vw",
                                     }}
                                   >
                                     {item.detail}
                                   </TableCell>
-                                  <TableCell style={{ paddingTop: "30px" }}>
+                                  <TableCell style={{ paddingTop: "30px",paddingLeft:"10vw" }}>
                                     <div
                                       className={profileStyle.Clickme}
                                       onClick={() => {
