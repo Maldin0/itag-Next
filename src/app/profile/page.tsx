@@ -536,9 +536,9 @@ export default function Profile({}: Props) {
                         <p>&nbsp;</p>
                         <Table >
                           <TableHeader>
-                            <TableColumn style={{paddingTop:'50px'}}>ITEM</TableColumn>
-                            <TableColumn style={{paddingTop:'50px'}}>DETAIL</TableColumn>
-                            <TableColumn style={{paddingTop:'50px'}}>STATUS</TableColumn>
+                            <TableColumn style={{paddingTop:'70px',}}>ITEM</TableColumn>
+                            <TableColumn style={{paddingTop:'70px',paddingLeft:'15vw',position:'absolute'}}>DETAIL</TableColumn>
+                            <TableColumn style={{paddingTop:'70px',paddingLeft:'40vw',position:'absolute'}}>ACTION</TableColumn>
                           </TableHeader>
                           <TableBody>
                             {user?.user._char[_char_id]?.bag.map(
@@ -553,12 +553,12 @@ export default function Profile({}: Props) {
                                   <TableCell
                                     style={{
                                       paddingTop: "30px",
-                                      paddingLeft: "250px",
+                                      paddingLeft: "8vw",
                                     }}
                                   >
                                     {item.detail}
                                   </TableCell>
-                                  <TableCell style={{ paddingTop: "30px" }}>
+                                  <TableCell style={{ paddingTop: "30px",paddingLeft:"10vw" }}>
                                     <div
                                       className={profileStyle.Clickme}
                                       onClick={() => {
