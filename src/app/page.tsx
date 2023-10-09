@@ -6,6 +6,7 @@ import Homestyle from "./HomeStyle.module.css";
 import { useRouter } from 'next/navigation'
 import React from "react";
 import Image from "next/image";
+import MyDocument from './_document';
 
 type Props = {};
 
