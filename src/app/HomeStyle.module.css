@@ -69,6 +69,7 @@
   color: white;
   font-size: 5rem; /* ปรับขนาดฟ้อนต์ลงเป็น 80% ของขนาดปกติ */
   transform: scale(0.9); /* ปรับขนาดโดยการลดขนาดเป็น 80% ของขนาดปกติ */
+
 }
 .flexContainer {
   display: flex;

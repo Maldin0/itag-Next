@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import '../../../bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from "next/navigation";
 import RegisStyle from "./RegisStyle.module.css";
 import LoginStyle from "../login/LoginStyle.module.css";
@@ -8,7 +9,7 @@ import axios from "axios";
 
 type Props = {};
 
-export default function Regis({}: Props) {
+export default function Regis({ }: Props) {
   const [username, setUsername] = React.useState<string>("");
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
@@ -70,51 +71,60 @@ export default function Regis({}: Props) {
           </h1>
         </div>
 
-        <div
-          className={RegisStyle.box}
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          <div className={RegisStyle.font}>
-            <h1>Sign up</h1>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+        <div className="container px-1 mainbox p-5" style={{width:'55%'}}>
+        
+            <div  className="row justify-center font mb-4">
+              <h1 className="col-2 whitespace-nowrap">Sign up</h1>
+            </div>
+           
+            
+            <div className="justify-content-center mb-4">
+              <div className={RegisStyle.line} ></div>
+            </div>
+            
+            
+            <div className="row justify-content-center mb-4">
+              <input
+                placeholder="E-mail"
+                type="text"
+                className="col-6 inputBox"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
+            </div>
+
+           
+            <div className="row justify-content-center mb-4">
+              <input
+                placeholder="Username"
+                type="text"
+                className="col-6 inputBox"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              ></input>
+            </div>
+
+            
+
+            <div className="row justify-content-center mb-5">
+              <input
+                placeholder="Password"
+                type="password"
+                className="col-6 inputBox"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
+            </div>
+
+           
+            <div className="row justify-content-center ">
+              <button type="button" className="button btn-dark col-2 " onClick={handleRegis}>Register</button>
+            </div>
           </div>
-
-          <div className={RegisStyle.line} style={{ paddingTop: "0%" }}></div>
-
-          <input
-            placeholder="E-mail"
-            type="text"
-            className={RegisStyle.inputBox}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-
-          <p>&nbsp;</p>
-
-          <input
-            placeholder="Username"
-            type="text"
-            className={RegisStyle.inputBox}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          ></input>
-
-          <p>&nbsp;</p>
-
-          <input
-            placeholder="Password"
-            type="password"
-            className={RegisStyle.inputBox}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-
-          <p>&nbsp;</p>
-          <div className={LoginStyle.submit}>
-            <button type={"submit"} onClick={handleRegis}>
-              Next
-            </button>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

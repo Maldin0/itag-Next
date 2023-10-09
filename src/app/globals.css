@@ -7,5 +7,31 @@
     box-sizing: border-box;
 }
 
+.font{
+    font-family: "Libre Baskerville, seriff";
+    font-size: 5em;
+}
+
+.inputBox {
+    padding: 0.5%;
+    text-align: left; 
+    border: 0.3rem solid black;
+    -webkit-border-radius: 35em; 
+}
+.mainbox{
+    width: 4%;
+    -webkit-border-radius: 5em; 
+    background-color: white;
+    
+}
+
+.button {
+    font-size: 15px;
+    height: 3em;
+    background-color: black;
+    color: white;
+    border-radius: 10em;
+    text-align: center;
+}
 
 

@@ -3,10 +3,10 @@
 import axios from "axios";
 import Link from "next/link";
 import Homestyle from "./HomeStyle.module.css";
+import '../../bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/navigation'
 import React from "react";
 import Image from "next/image";
-import MyDocument from './_document';
 
 type Props = {};
 
@@ -569,6 +569,7 @@ export default function Home({}: Props) {
                 alt="pupha"
               ></Image>
             </div>
+            
             <div>
               <h1
                 className={Homestyle.myfont}
@@ -608,6 +609,7 @@ export default function Home({}: Props) {
             <div style={{ display: "inline-block" }}>65070051@kmitl.ac.th</div>
           </div>
         </div>
+        
       </div>
     </div>
   );
