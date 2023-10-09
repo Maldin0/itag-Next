@@ -3,7 +3,7 @@
 import axios from "axios";
 import Link from "next/link";
 import Homestyle from "./HomeStyle.module.css";
-import '../../bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/navigation'
 import React from "react";
 import Image from "next/image";

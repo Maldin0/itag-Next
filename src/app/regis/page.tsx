@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import '../../../bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from "next/navigation";
 import RegisStyle from "./RegisStyle.module.css";
 import LoginStyle from "../login/LoginStyle.module.css";
@@ -74,7 +74,7 @@ export default function Regis({ }: Props) {
         <p>&nbsp;</p>
         <p>&nbsp;</p>
 
-        <div className="container px-1 mainbox p-5" style={{width:'55%'}}>
+        <div className="container px-1 mainbox p-5 col-12" style={{maxWidth:'50%', minWidth:'414px'}}>
         
             <div  className="row justify-center font mb-4">
               <h1 className="col-2 whitespace-nowrap">Sign up</h1>
