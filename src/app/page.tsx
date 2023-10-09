@@ -152,8 +152,8 @@ export default function Home({}: Props) {
                     height="100"
                     alt="roll now image"
                   ></Image>
-                  <Link href="/regis">
-                    <h1
+                  <Link href="/regis" className="text-decoration-none">
+                    <h1 
                       className={Homestyle.mainfont}
                       style={{
                         marginLeft: "25%",
