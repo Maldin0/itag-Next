@@ -150,7 +150,7 @@ export default function Createcharacter({ }: Props) {
     async function HDcreateCharacter(characterName: string, selectedRace: string, selectedClass: string, characterBG: string, status: number[]) {
         try {
             setLoading(true);
-            const res = await axios.post("https://itag_server.iservkmitl.tech/users/characters/create", 
+            const res = await axios.post("https://itag_server.iservkmitl.tech/users/characters/create",
                 {
                     race_id: allRace[selectedRace],
                     class_id: allClass[selectedClass],
@@ -221,17 +221,17 @@ export default function Createcharacter({ }: Props) {
                             
                         </div>
                         <div className={CreateChaStyle.box2}>
-                            <div style={{alignSelf:'flex-start',paddingLeft:'15%',paddingTop:'5%'}}>
+                            <div style={{alignSelf:'flex-start',paddingLeft:'20%',paddingTop:'2.5%'}}>
                                 <h1 className={CreateChaStyle.font}>Customize</h1>
                             </div>
                             <div className={CreateChaStyle.line} ></div>
 
-                            <div style={{paddingTop:'40px'}}></div>
+                            <div style={{paddingTop:'2%'}}></div>
                             <input placeholder='Name' type='text' className={CreateChaStyle.inputBox} value={characterName} onChange={(e) => setCharacterName(e.target.value)}></input>
                             
                             
-                            <div style={{paddingTop:'30px'}}>
-                                <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'25%'}}>
+                            <div style={{paddingTop:'1%'}}>
+                                <Dropdown className={CreateChaStyle.wrapper}>
                                     <DropdownTrigger className={CreateChaStyle.selectbtn}>
                                         <Button style={{whiteSpace:'nowrap'}}>
                                              {selectedRace || "Choose a Race"}
@@ -240,9 +240,9 @@ export default function Createcharacter({ }: Props) {
                                     <DropdownMenu className={CreateChaStyle.content}>
                                     {
                                         Object.keys(allRace).map(race => (
-                                            <DropdownItem 
-                                                className={CreateChaStyle.options} 
-                                                key={race} 
+                                            <DropdownItem
+                                                className={CreateChaStyle.options}
+                                                key={race}
                                                 onClick={() => setSelectedRace(race)}>
                                                 {race}
                                             </DropdownItem>
@@ -252,7 +252,7 @@ export default function Createcharacter({ }: Props) {
                                 </Dropdown>
                             </div>
 
-                            <div style={{paddingTop:'30px'}}>
+                            <div style={{paddingTop:'1%'}}>
                                 <Dropdown className={CreateChaStyle.wrapper} style={{paddingTop:'1%',alignSelf:'flex-start',paddingLeft:'25%'}}>
                                     <DropdownTrigger className={CreateChaStyle.selectbtn}>
                                         <Button style={{whiteSpace:'nowrap'}}>
@@ -261,12 +261,12 @@ export default function Createcharacter({ }: Props) {
                                     </DropdownTrigger>
                                     <DropdownMenu className={CreateChaStyle.content}>
                                     {
-                                        Object.keys(allClass).map(className => ( 
-                                            <DropdownItem 
-                                                className={CreateChaStyle.options} 
-                                                key={className} 
-                                                onClick={() => setSelectedClass(className)}> 
-                                                {className} 
+                                        Object.keys(allClass).map(className => (
+                                            <DropdownItem
+                                                className={CreateChaStyle.options}
+                                                key={className}
+                                                onClick={() => setSelectedClass(className)}>
+                                                {className}
                                             </DropdownItem>
                                         ))
                                     }
@@ -274,8 +274,8 @@ export default function Createcharacter({ }: Props) {
                                 </Dropdown>
                             </div>
 
-                            <div style={{paddingTop:'20px'}}></div>
-                            <button  onClick={generateRandomNumbers} className={CreateChaStyle.inputBox} style={{}}><p>Random Stats: {randomNumbers.join(", ")}</p></button>
+                            <div style={{paddingTop:'1%'}}></div>
+                            <button  onClick={generateRandomNumbers} className={CreateChaStyle.selectbtn} style={{}}><p>Random Stats: {randomNumbers.join(", ")}</p></button>
                             <p style={{paddingTop:'10px'}}>
                                 dex: {randomNumbers[0]},
                                 &nbsp;wis: {randomNumbers[1]},
@@ -297,10 +297,10 @@ export default function Createcharacter({ }: Props) {
                                 <button type={'submit'} onClick={()=>{
                                     setRandomNumbers(randomNumbers)
                                     HDcreateCharacter(
-                                        characterName, 
-                                        selectedRace, 
-                                        selectedClass, 
-                                        characterBG, 
+                                        characterName,
+                                        selectedRace,
+                                        selectedClass,
+                                        characterBG,
                                         randomNumbers
                                         )}}
                                         disabled={loading}>

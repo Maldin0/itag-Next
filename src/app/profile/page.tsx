@@ -273,87 +273,152 @@ export default function Profile({}: Props) {
           className={profileStyle.profile}
           style={{ display: "inline-flex" }}
         >
+          {/*<div*/}
+          {/*  className={profileStyle.username}*/}
+          {/*  style={{ display: "inline-block" }}*/}
+          {/*>*/}
+          {/*  Username : {user?.user._username}{" "}*/}
+          {/*</div>*/}
+          {/*<div*/}
+          {/*  className={profileStyle.email}*/}
+          {/*  style={{ display: "inline-block" }}*/}
+          {/*>*/}
+          {/*  Email : {user?.user._email}*/}
+          {/*</div>*/}
           <div
-            className={profileStyle.username}
-            style={{ display: "inline-block" }}
+              className={profileStyle.char}
+              style={{
+                paddingLeft: "300px",
+                top:'30%',
+                fontSize: "1.3rem",
+                display: "inline-block",
+              }}
           >
-            Username : {user?.user._username}{" "}
+            Name :
           </div>
           <div
-            className={profileStyle.email}
-            style={{ display: "inline-block" }}
+              className={profileStyle.char}
+              style={{
+                left: '-75px',
+                top:'50%',
+                fontSize: "1.3rem",
+                display: "inline-block",
+              }}
           >
-            Email : {user?.user._email}
+            Class :
           </div>
+          <div
+              className={profileStyle.char}
+              style={{
+                paddingLeft: "60px",
+                top:'30%',
+                fontSize: "1.3rem",
+                display: "inline-block",
+              }}
+          >
+            Race :
+          </div>
+          <div
+              className={profileStyle.char}
+              style={{
+                left: "-63px",
+                top:'50%',
+                fontSize: "1.3rem",
+                display: "inline-block",
+              }}
+          >
+            Details :
+          </div>
+          {/*<div*/}
+          {/*    className={profileStyle.char}*/}
+          {/*    style={{*/}
+          {/*      paddingLeft: "110px",*/}
+          {/*      fontSize: "1.3rem",*/}
+          {/*      display: "inline-block",*/}
+          {/*    }}*/}
+          {/*>*/}
+          {/*  Inventory*/}
+          {/*</div>*/}
+
+          {/*<div*/}
+          {/*    className={profileStyle.char}*/}
+          {/*    style={{*/}
+          {/*      paddingLeft: "95px",*/}
+          {/*      fontSize: "1.3rem",*/}
+          {/*      display: "inline-block",*/}
+          {/*    }}*/}
+          {/*>*/}
+          {/*  Delete*/}
+          {/*</div>*/}
         </div>
 
-        <div className={profileStyle.line}></div>
-        <div className={profileStyle.char} style={{ paddingLeft: "800px" }}>
-          Your character
-        </div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div
-          className={profileStyle.char}
-          style={{
-            paddingLeft: "300px",
-            fontSize: "1.3rem",
-            display: "inline-block",
-          }}
-        >
-          CharacterName
-        </div>
-        <div
-          className={profileStyle.char}
-          style={{
-            paddingLeft: "40px",
-            fontSize: "1.3rem",
-            display: "inline-block",
-          }}
-        >
-          ClassName
-        </div>
-        <div
-          className={profileStyle.char}
-          style={{
-            paddingLeft: "60px",
-            fontSize: "1.3rem",
-            display: "inline-block",
-          }}
-        >
-          RaceName
-        </div>
-        <div
-          className={profileStyle.char}
-          style={{
-            paddingLeft: "80px",
-            fontSize: "1.3rem",
-            display: "inline-block",
-          }}
-        >
-          Details
-        </div>
-        <div
-          className={profileStyle.char}
-          style={{
-            paddingLeft: "110px",
-            fontSize: "1.3rem",
-            display: "inline-block",
-          }}
-        >
-          Inventory
-        </div>
+        {/*/!*<div className={profileStyle.line}></div>*!/*/}
+        {/*/!*<div className={profileStyle.char} style={{ paddingLeft: "800px" }}>*!/*/}
+        {/*/!*  Your character*!/*/}
+        {/*/!*</div>*!/*/}
+        {/*<div>&nbsp;</div>*/}
+        {/*<div>&nbsp;</div>*/}
+        {/*<div*/}
+        {/*  className={profileStyle.char}*/}
+        {/*  style={{*/}
+        {/*    paddingLeft: "300px",*/}
+        {/*    fontSize: "1.3rem",*/}
+        {/*    display: "inline-block",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  CharacterName*/}
+        {/*</div>*/}
+        {/*<div*/}
+        {/*  className={profileStyle.char}*/}
+        {/*  style={{*/}
+        {/*    paddingLeft: "40px",*/}
+        {/*    fontSize: "1.3rem",*/}
+        {/*    display: "inline-block",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  ClassName*/}
+        {/*</div>*/}
+        {/*<div*/}
+        {/*  className={profileStyle.char}*/}
+        {/*  style={{*/}
+        {/*    paddingLeft: "60px",*/}
+        {/*    fontSize: "1.3rem",*/}
+        {/*    display: "inline-block",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  RaceName*/}
+        {/*</div>*/}
+        {/*<div*/}
+        {/*  className={profileStyle.char}*/}
+        {/*  style={{*/}
+        {/*    paddingLeft: "80px",*/}
+        {/*    fontSize: "1.3rem",*/}
+        {/*    display: "inline-block",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  Details*/}
+        {/*</div>*/}
+        {/*<div*/}
+        {/*  className={profileStyle.char}*/}
+        {/*  style={{*/}
+        {/*    paddingLeft: "110px",*/}
+        {/*    fontSize: "1.3rem",*/}
+        {/*    display: "inline-block",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  Inventory*/}
+        {/*</div>*/}
 
-        <div
-          className={profileStyle.char}
-          style={{
-            paddingLeft: "95px",
-            fontSize: "1.3rem",
-            display: "inline-block",
-          }}
-        >
-          Delete
-        </div>
+        {/*<div*/}
+        {/*  className={profileStyle.char}*/}
+        {/*  style={{*/}
+        {/*    paddingLeft: "95px",*/}
+        {/*    fontSize: "1.3rem",*/}
+        {/*    display: "inline-block",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  Delete*/}
+        {/*</div>*/}
         <div>&nbsp;</div>
         {user?.user._char.map((character, _char_id) => (
           <div className={profileStyle.flexContainer} key={_char_id}>
@@ -753,19 +818,19 @@ export default function Profile({}: Props) {
         ))}
         <div></div>
 
-        <Link href="/character">
-          <div
-            className={profileStyle.button}
-            style={{ marginTop: "5%", marginLeft: "40vw" }}
-          >
-            <button type={"submit"} style={{ marginTop: "5%" }}>
-              create
-            </button>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-          </div>
-        </Link>
+        {/*<Link href="/character">*/}
+        {/*  <div*/}
+        {/*    className={profileStyle.button}*/}
+        {/*    style={{ marginTop: "5%", marginLeft: "40vw" }}*/}
+        {/*  >*/}
+        {/*    <button type={"submit"} style={{ marginTop: "5%" }}>*/}
+        {/*      create*/}
+        {/*    </button>*/}
+        {/*    <p>&nbsp;</p>*/}
+        {/*    <p>&nbsp;</p>*/}
+        {/*    <p>&nbsp;</p>*/}
+        {/*  </div>*/}
+        {/*</Link>*/}
       </div>
     </div>
   );

@@ -9,6 +9,10 @@
   font-family: "Metal Mania", serif;
   font-size: 1rem;
   transform: scale(3.5);
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  color: white;
 }
 
 .scroll{
@@ -24,10 +28,7 @@
   position: static;
   width: 100%;
   height: 4em;
-  
   background-color: saddlebrown;
-
-
 }
 
 .box2 h1 {
@@ -68,14 +69,14 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 55%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   margin: auto;
-  top: 10%;
-  left: 22%;
-  justify-content: top;
+  top: 5%;
+  left: 5%;
+  justify-content: flex-end;
   align-items: center;
-  border-radius: 10em;
+  border-radius: 30%;
   background-color: wheat;
 }
 
@@ -90,18 +91,7 @@
   
 }
 
-.circle {
-  background-size: 100%;
 
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 25%;
-  left: 10%;
-
-  height: 15em;
-  width: 15em;
-  background-image: url('/images/images.jpg');
-}
 
 .username {
   position: absolute;
@@ -121,11 +111,11 @@
 .line {
   position: static;
   width: 90%;
-  height: 0.3em;
-  border-radius: 1em;
+  height: 0.2%;
+  border-radius: 10%;
   background-color: black;
-
-  margin-left: 5%;
+  margin-left: 1%;
+  padding-top: 0.5%;
 }
 
 .char {
@@ -199,9 +189,12 @@
   cursor: pointer;
 }
 .wrapper{
-  z-index: 10;
+  z-index: 20;
   width: auto;
   font-family: "Libre Baskerville", serif;
+  padding-top: 1%;
+  align-self: flex-start;
+  padding-left: 25%;
 }
 
 
@@ -209,19 +202,19 @@
 .selectbtn .options{
   display: flex;
   cursor: pointer;
-  align-items: left;
-  
+  align-items: flex-start;
 }
 .selectbtn{
   border: 0.3rem solid black;
-  width: 400px;
+  width: 600px;
   height: 50px;
-  padding: 10px;
+  padding: 5px;
   padding-right: 450px;
   background-color: transparent;
   -webkit-border-radius: 35em;
   cursor: pointer;
   justify-content: space-between;
+  white-space: nowrap;
 }
 
 .content{
@@ -236,7 +229,6 @@
 
 .wrapper.active .content{
   display: none;
- 
 }
 
 
@@ -250,13 +242,36 @@
   background-color: rgb(243, 233, 214);
 }
 
-.box .inputBox {
-  width: 63%;
-  height: 7%;
-  padding-left: 10px;
-  text-align: left;
-  background-color: transparent;
-  transform: translateY(10%);
+.box2 .inputBox {
   border: 0.3rem solid black;
+  width: 600px;
+  height: 50px;
+  padding: 10px;
+  padding-right: 450px;
+  background-color: transparent;
   -webkit-border-radius: 35em;
+  cursor: pointer;
+  justify-content: space-between;
+}
+.inputBox::placeholder{
+  color: black;
+}
+@media screen and (max-width: 768px) {
+  .topfont {
+    font-size: 1.5rem; /* เปลี่ยนขนาดตัวอักษรสำหรับหน้าจอเล็ก */
+    top: 20%; /* เปลี่ยนตำแหน่งตัวอักษรด้านบนสำหรับหน้าจอเล็ก */
+    left: 2%; /* เปลี่ยนตำแหน่งตัวอักษรด้านซ้ายสำหรับหน้าจอเล็ก */
+  }
+
+  .box {
+    width: 50%; /* ปรับขนาดกล่องหลักให้กว้างขึ้นสำหรับหน้าจอเล็ก */
+    left: 5%; /* เปลี่ยนตำแหน่งกล่องหลักด้านซ้ายสำหรับหน้าจอเล็ก */
+  }
+
+  .box2 {
+    width: 40%; /* ปรับขนาดกล่องที่สองให้กว้างขึ้นสำหรับหน้าจอเล็ก */
+    left: 10%; /* เปลี่ยนตำแหน่งกล่องที่สองด้านซ้ายสำหรับหน้าจอเล็ก */
+  }
+
+  /* เพิ่มการปรับแต่งอื่น ๆ ที่ต้องการสำหรับหน้าจอเล็ก */
 }
